@@ -1,0 +1,10 @@
+section{
+	float: left;
+}
+aside{
+	float: right;
+	padding-right: 20%;
+}
+#webtitle{
+	text-align: left;
+}
