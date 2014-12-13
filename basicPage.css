@@ -19,8 +19,11 @@ guideText img{
 	padding: 25px;
 }
 guideText video{
-	width: 320px
-	height: 240px
+	width: 320px;
+	height: 240px;
+}
+guideText source{
+	type: "video/mp4";
 }
 #webtitle{
 	text-align: left;
