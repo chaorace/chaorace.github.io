@@ -17,6 +17,7 @@ guideText{
 			
 guideText img{
 	padding: 25px;
+	max-height: 250px;
 }
 guideText video{
 	width: 320px;
