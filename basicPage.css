@@ -5,6 +5,23 @@ aside{
 	float: right;
 	padding-right: 20%;
 }
+guideText{
+				display: block;
+				background-color: #ddd;
+				padding-top: 20px;
+				padding-bottom: 35px;
+				padding-right: 200px;
+				padding-left: 10px;
+				font-size: 18px;
+			}
+			
+guideText img{
+	padding: 25px;
+}
+guideText video{
+	width: 320px
+	height: 240px
+}
 #webtitle{
 	text-align: left;
 }
