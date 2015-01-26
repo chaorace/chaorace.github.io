@@ -52,7 +52,7 @@
 		<h3>Step Four: Understanding The Functionality Built Into AwesomeAI</h3>
 		<guideText>
 			AwesomeAI is structured with two major types of files: Triggers and Events (Other minor file types exist!). These Triggers and Events are bundled into Toolkits.
-			The file Structure looks like this:
+			The file structure looks like this:
 			<br />
 			<img src="guide-images/AwesomeAI/FileDiagram.png" />
 			<br />
@@ -110,6 +110,8 @@
 				<br />
 				<li>
 					Companion -- An example AI. This serves as a sort of demo for beginners to reference. No AIs depend on this and it can be safely deleted
+					<br />
+					Triggers:
 					<ul>
 						<li>Clingy -- (Boolean) Used to activate the Companion Toolkit. So long as this trigger is active, the Companion Toolkit will handle most of AwesomeAI functions</li>
 					</ul>
@@ -180,9 +182,13 @@
 				<br />
 				<li>
 					Pathfinding -- Handles node-based movement
+					<br />
+					Triggers:
 					<ul>
 						<li>MoveTowardNextNode -- (Boolean) Makes use of MoveUp/Down and MoveForward/Backward. Handles navigating towards the target node. This trigger can be used in conjunction with WaypointPlus or as a standalone. Functions very similarly to GeneralAI's implementation of node logic</li>
 					</ul>
+					<br />
+					No Events
 				</li>
 				<br />
 				<li>
