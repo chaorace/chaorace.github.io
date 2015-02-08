@@ -141,8 +141,16 @@
 					<br />
 					Events:
 					<ul>
-						<li>AreaSpawn -- True when in a S</li>
-						
+						<li>Area* -- (Booleans) True when in the described area</li>
+						<li>Target*(distance) -- (Booleans) True when the target is in the described distance range</li>
+						<li>Self* -- (Booleans) True when in the described health range</li>
+						<li>Target*(health) -- (Booleans) True when the target is in the described health range</li>
+						<li>WallAt* -- (Booleans) True when a wall is in the specified area (~ is used in place of -)</li>
+						<li>TargetAtLeft/Right -- (Booleans) True when the target is at the specified sides. Neither will be true when directly above or below</li>
+						<li>BlockerType -- (Counter) Tells what's directly in front of the bot. 0 - None 1 - Enemy Awesomenaut 2 - Enemy Droid 3 - Neutral Critter -1 - Unknown</li>
+						<li>OnPlatform -- (Boolean) True when standing on top of a glass platform</li>
+						<li>CornerStuckTicks -- (Counter) Represents the number of ticks heuristics has detected the bot is stuck in a corner</li>
+						<li>Gold -- (Counter) Represents the amount of spendable solar the bot has. Increases in increments of 10 and caps out at 1500</li>
 					</ul>
 				</li>
 				<br />
@@ -155,6 +163,7 @@
 					<ul>
 						<li>CurrentMap -- (Counter) Indicates current map. 0: Ribbit IV 1: AIStation 404 2: Sorona 3: Aiguillon 4: AIStation 205 NOTE: Does not update until the bot goes to the shop for the first time</li>
 						<li>Turret* -- (Booleans) Set of events indicating the status of the corresponding turret. Currently, these events are unfinished and subject to heavy changes over time. I'd recommend not using these yet</li>
+						<li>Gold -- (Counter) Indicates the current amount of solar. Increases in increments of 10 and caps out at 1500</li>
 					</ul>
 				</li>
 				<br />
