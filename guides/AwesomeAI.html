@@ -162,8 +162,7 @@
 					Events:
 					<ul>
 						<li>CurrentMap -- (Counter) Indicates current map. 0: Ribbit IV 1: AIStation 404 2: Sorona 3: Aiguillon 4: AIStation 205 NOTE: Does not update until the bot goes to the shop for the first time</li>
-						<li>Turret* -- (Booleans) Set of events indicating the status of the corresponding turret. Currently, these events are unfinished and subject to heavy changes over time. I'd recommend not using these yet</li>
-						<li>Gold -- (Counter) Indicates the current amount of solar. Increases in increments of 10 and caps out at 1500</li>
+						<li>Turret* -- (Booleans) Set of events indicating the status (dead or alive) of the corresponding turret. First digit represents turret team (1 = red, 2 = blue). Second digit represents turret location (0 = Top Back, 1 = Bottom Back, 2 = Top Front, 3 = Bottom Front). The Bottom Back turrets do not exist on Sorona, so Turret11 and Turret21 are always false on Sorona. The Top Front turrets don't exist on AI Station 404, so Turret12 an Turret22 are always false on AI Station 404.</li>
 					</ul>
 				</li>
 				<br />
