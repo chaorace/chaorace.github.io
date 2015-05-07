@@ -39,14 +39,20 @@ var intros = [
     "flying on a magic text-editor",
     "pretty ordinary(?)"
   ];
-  
+
+var postLoad = setTimeout(main, 100)
+var headerTimer = setTimeout(main, 7000);
+
 function main(){
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
+}
+
+function headerClicked(){
+  main();
+  clearInterval(headerTimer);
+  headerTimer = setInterval(main, 7000);
 }
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-
-var headerTimer = setTimeout(main, 2000);
-var postLoad = setTimeout(main, 5)
