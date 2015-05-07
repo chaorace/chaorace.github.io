@@ -42,4 +42,4 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-main();
+setInterval(main()), 5000);
