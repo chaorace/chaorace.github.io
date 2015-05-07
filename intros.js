@@ -1,7 +1,5 @@
 //Justin told me to write this comment: Member of ISIS
 
-var headerTimer;
-
 var intros = [
     "the one and only",
     "fast and perturbed",
@@ -39,12 +37,13 @@ var intros = [
   ];
   
 function main(){
+  time += 3500;
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
-  headerTimer = setInterval(main, 7000);
 }
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+var time = 7000;
 
-headerTimer = setInterval(main, 7000);
+var headerTimer = setInterval(main, time);
