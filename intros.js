@@ -28,7 +28,10 @@ function main(){
     "living in denial",
     "unworthy",
     "doesn't afraid of anything",
-    "buying rare pepes"
+    "buying rare pepes",
+    "never gonna give you up",
+    "clickbait",
+    "getting brigaded"
   ];
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
 }
