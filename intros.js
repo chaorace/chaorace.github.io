@@ -48,5 +48,5 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var headerTimer = setTimeout(main, 2500);
+var headerTimer = setTimeout(main, 1500);
 var postLoad = setTimeout(main, 5)
