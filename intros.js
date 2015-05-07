@@ -32,7 +32,8 @@ function main(){
     "buying rare pepes",
     "never gonna give you up",
     "clickbait",
-    "getting brigaded"
+    "getting brigaded",
+    "cow-ace"
   ];
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
 }
