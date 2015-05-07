@@ -1,23 +1,33 @@
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<!--
-	while(true){
-		Vocalizer.apologize("Sorry for my poor html! Just pretend it's the 90's");
-	}
-	--> 
+	Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
+	-->
 	<head>
-		<link rel="stylesheet" type="text/css" href="basicPage.css">
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 		<link rel="shortcut icon" href="images/favicon.ico" />
-		<title>Projects</title>
-		<a href="index.html"><img src="images\chaofacex64.png" /></a>
-		<center id="webtitle"><h1>chaorace -- Projects</h1></center>
-		<hr />
+		<title>Inconsistently named site</title>
+		<script src="intros.js"></script>
 	</head>
-	<section>
-		<h2>Projects</h2>
-		<guideText>
+	<div id="header">
+		<h1 onclick="main();">chaorace is <span id="introField">sad you don't use javascript</span> //Chris Crockett</h1>
+		<div id="menu">
+			<ul id="nav">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Resume</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li><a href="awards.html">Awards</a></li>
+				<li><a href="contact.html">Contact Info</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div id="right">
+		<h1>Projects</h1>
 			<ul>
 				<li>
-					<h3>AwesomeAI</h3>
+					<h2>AwesomeAI</h2>
 					<ul>
 						<li>A (WIP) bot AI replacement for the Indie 2D MOBA <a href="http://www.awesomenauts.com/">Awesomenauts</a></li>
 						<li><a href="https://github.com/chaorace/YuriAI">Github Project</a></li>
@@ -25,7 +35,7 @@
 					</ul>
 				</li>
 				<li>
-					<h3>YuriBot</h3>
+					<h2>YuriBot</h2>
 					<ul>
 						<li>A bot AI for <a href="http://www.awesomenauts.com/">Awesomenauts</a></li>
 						<li><a href="http://www.awesomenauts.com/forum/viewtopic.php?f=23&t=30958&p=385640#p385640">Final Release</a></li>
@@ -33,7 +43,7 @@
 					</ul>
 				</li>
 				<li>
-					<h3>TeamReader</h3>
+					<h2>TeamReader</h2>
 					<ul>
 						<li>Software that transcribes Teamspeak chat to speech</li>
 						<li>Made using <a href="http://espeak.sourceforge.net/">eSpeak</a> by <a href="http://sourceforge.net/u/jonsd/profile/">Jonathan Duddington</a> </li>
@@ -42,7 +52,7 @@
 					</ul>
 				</li>
 				<li>
-					<h3>Videos</h3>
+					<h2>Videos</h2>
 					<ul>
 						<li>I occasionally produce content on Youtube and Twitch.tv!</li>
 						<li><a href="https://www.youtube.com/channel/UCenwrbNUyO_49h54-wxZKbg">Youtube</a></li>
@@ -52,19 +62,17 @@
 					</ul>
 				</li>
 				<li>
-					<h3>This Webpage!</h3>
+					<h2>This Webpage!</h2>
 					<ul>
 						<li>My own personal steaming dump of ASCII and markup on the internet</li>
 						<li>Actively developed</li>
 					</ul>
 				</li>
 			</ul>
-		</guideText>
-		<h2>Derivative Works</h2>
-		<guideText>
+		<h1>Derivative Works</h1>
 			<ul>
 				<li>
-					<h3>YuriAI</h3>
+					<h2>YuriAI</h2>
 					<ul>
 						<li>A bot AI for <a href="http://www.awesomenauts.com/">Awesomenauts</a></li>
 						<li>Created by Ignotis (unaffiliated with me)</li>
@@ -74,12 +82,10 @@
 					</ul>
 				</li>
 			</ul>
-		</guideText>
-		<h2>Guides</h2>
-		<guideText>
+		<h1>Guides</h1>
 			<ul>
 				<li>
-					<a href="guides/httptunnel.html"><h3>HTTPTunnel Windows</h3></a>
+					<a href="guides/httptunnel.html"><h2>HTTPTunnel Windows</h2></a>
 					<ul>
 						<li>A guide for creating an HTTP proxy server and accessing it remotely</li>
 						<li><a href="guides/httptunnel.html">Published Here</a></li>
@@ -87,22 +93,22 @@
 					</ul>
 				</li>
 				<li>
-					<a href="guides/teamreader.html"><h3>TeamReader Windows</h3></a>
+					<a href="guides/teamreader.html"><h2>TeamReader Windows</h2></a>
 					<ul>
 						<li>A guide to using TeamReader TTS with TeamSpeak!</li>
 						<li><a href="guides/teamreader.html">Published Here</a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="guides/AwesomeAI.html"><h3>AwesomeAI</h3></a>
+					<a href="guides/AwesomeAI.html"><h2>AwesomeAI</h2></a>
 					<ul>
 						<li>A starter guide to using AwesomeAI</li>
 						<li><a href="guides/AwesomeAI.html">Published Here</a></li>
 					</ul>
 				</li>
 			</ul>
-		</guideText>
 		<br />
 		<a href="index.html">Home</a>
-	</section>
+	</div>
+</div>
 </html>
