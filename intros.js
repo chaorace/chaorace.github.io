@@ -49,4 +49,4 @@ function getRandomInt(min, max) {
 }
 
 var headerTimer = setTimeout(main, 7000);
-var postLoad = setTimeout(main, 25)
+var postLoad = setTimeout(main, 5)
