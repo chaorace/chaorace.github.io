@@ -44,4 +44,4 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var headerTimer = setInterval(main, 5000);
+var headerTimer = setInterval(main, 7000);
