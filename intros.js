@@ -37,7 +37,8 @@ var intros = [
     "kill. no",
     "on the edge of tommorow",
     "flying on a magic text-editor",
-    "pretty ordinary(?)"
+    "pretty ordinary(?)",
+    "Z̴͗̈͆̆̓ͬ̈́̿͐̎̍̉̍̈̓ͮ̋͒͝A̽͗͛͑̎͑̉̍͆͘͢Ļ̴͂̒ͮ͛͐͛ͬ̀ͬ͆ͫ͒̾ͦ͒ͬͮ̅̀Ġ̷̸͌̿ͥ̓̊ͯ̔͐̓ͣ͐̏̌͛ͧͣ̚̚҉O̴̶̊͂ͮ̈̿͊̎́̿͌ͭ͛̂͋ͣ!̶̡͊ͦͭ̇ͧͬ̽̌̒̓͗͐̌̍̒ͧ͘"
   ];
 
 var postLoad = setTimeout(main, 100)
