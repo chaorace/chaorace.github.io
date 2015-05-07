@@ -25,7 +25,10 @@ function main(){
     "rich in protien",
     "bad at speling",
     "secretly a mermaid",
-    "living in denial"
+    "living in denial",
+    "unworthy",
+    "doesn't afraid of anything",
+    "buying rare pepes"
   ];
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
 }
