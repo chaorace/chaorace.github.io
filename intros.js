@@ -1,6 +1,6 @@
 //Justin told me to write this comment: Member of ISIS
-function main(){
-  var intros = [
+
+var intros = [
     "the one and only",
     "fast and perturbed",
     "an unhelpful stacktrace",
@@ -35,6 +35,8 @@ function main(){
     "getting brigaded",
     "cow-ace"
   ];
+  
+function main(){
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
 }
 
@@ -42,4 +44,4 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-setInterval(function(){main();}), 5000);
+var headerTimer = setInterval(main, 5000);
