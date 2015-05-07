@@ -33,7 +33,11 @@ var intros = [
     "never gonna give you up",
     "clickbait",
     "getting brigaded",
-    "cow-ace"
+    "cow-ace",
+    "kill. no",
+    "on the edge of tommorow",
+    "flying on a magic text-editor",
+    "pretty ordinary(?)"
   ];
   
 function main(){
