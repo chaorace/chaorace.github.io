@@ -46,7 +46,7 @@ var intros = [
     "spinning up...",
     "updating...",
     "imploding",
-    "just a clever visual metaphor"
+    "a clever visual metaphor"
   ];
 
 var postLoad = setTimeout(main, 100)
