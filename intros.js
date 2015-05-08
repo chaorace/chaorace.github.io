@@ -40,7 +40,7 @@ var intros = [
     "pretty ordinary(?)",
     "a starship captain",
     "a flying laser monkey",
-    "a spiky hedgehog"
+    "a spiky hedgehog",
     "Z̴͗̈͆̆̓ͬ̈́̿͐̎̍̉̍̈̓ͮ̋͒͝A̽͗͛͑̎͑̉̍͆͘͢Ļ̴͂̒ͮ͛͐͛ͬ̀ͬ͆ͫ͒̾ͦ͒ͬͮ̅̀Ġ̷̸͌̿ͥ̓̊ͯ̔͐̓ͣ͐̏̌͛ͧͣ̚̚҉O̴̶̊͂ͮ̈̿͊̎́̿͌ͭ͛̂͋ͣ!̡͊ͦͭ̇ͧͬ̽̌̒̓͗͐̌̍̒ͧ
   ];
 
