@@ -47,18 +47,21 @@ var intros = [
     "updating...",
     "imploding...",
     "a tunnel snake (they rule)",
-    "made with ❤️",
-    "brought to you by Comcast©",
+    "made with ♥️",
+    "brought to you by Comcast",
     "bad at DI",
     "recompiling...",
     "uʍop ǝpᴉsdn",
     "a lie",
     "made with 💔",
-    "roaming a nuclear wasteland",
+    "roaming the wasteland",
     "dabbling in the dark arts",
     "LITTLE BABY MAN",
     "F5 F5 F5 F5",
-    "observing Festivus"
+    "observing Festivus",
+    "lagging",
+    "value",
+    "running out of entropy"
   ];
 
 var postLoad = setTimeout(main, 100)
