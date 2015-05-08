@@ -61,7 +61,10 @@ var intros = [
     "observing Festivus",
     "lagging",
     "value",
-    "running out of entropy"
+    "running out of entropy",
+    "↑↑↓↓←→←→ B A Start",
+    "tʃɑo ˈreɪs̯",
+    
   ];
 
 var postLoad = setTimeout(main, 100)
