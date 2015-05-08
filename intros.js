@@ -45,9 +45,21 @@ var intros = [
     "collecting redstone",
     "spinning up...",
     "updating...",
-    "imploding",
+    "imploding...",
     "a tunnel snake (they rule)",
-    "🐙🐙🐙🐙🐙🐙"
+    "🐙🐙🐙🐙🐙🐙,
+    "made with ❤️",
+    "brought to you by Comcast©",
+    "bad at DI",
+    "recompiling...",
+    "uʍop ǝpᴉsdn",
+    "a lie",
+    "made with 💔",
+    "roaming a nuclear wasteland",
+    "dabbling in the dark arts",
+    "LITTLE BABY MAN",
+    "F5 F5 F5 F5",
+    "observing Festivus"
   ];
 
 var postLoad = setTimeout(main, 100)
