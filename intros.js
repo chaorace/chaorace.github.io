@@ -1,6 +1,6 @@
 //Justin told me to write this comment: Member of ISIS
 
-var zalgo = "Z̴͗̈͆̆̓ͬ̈́̿͐̎̍̉̍̈̓ͮ̋͒͝A̽͗͛͑̎͑̉̍͆͘͢Ļ̴͂̒ͮ͛͐͛ͬ̀ͬ͆ͫ͒̾ͦ͒ͬͮ̅̀Ġ̷̸͌̿ͥ̓̊ͯ̔͐̓ͣ͐̏̌͛ͧͣ̚̚҉O̴̶̊͂ͮ̈̿͊̎́̿͌ͭ͛̂͋ͣ!͊ͦͭ̇ͧͬ̽̌̒̓͗͐;
+var zalgo = "Z̓ͩͥ͆͂ͭͥͣͩͪ͐̎͋͂̍ͫ̇͆҉̴͟͠҉A̍͌̇҉̛͢͝L̨̨̍ͫ̆͗̍̇G̸̛ͨͥ̐͊ͮͥ̕͞O̵̧̅ͤ̌̒ͣ̈́͘͟͠!̧ͨ̽̈́̋̍̋ͨ͛̈́͊ͪͯ͋̏̾̂";
 
 //Intros should be 30 characters or less to avoid ugly wrapping
 var intros = [
