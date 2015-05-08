@@ -64,6 +64,7 @@ var intros = [
     "running out of entropy",
     "↑↑↓↓←→←→ B A Start",
     "tʃɑo ˈreɪs̯",
+    "🐙🐙🐙🐙🐙🐙"
     
   ];
 
