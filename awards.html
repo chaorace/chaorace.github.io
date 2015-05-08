@@ -1,43 +1,78 @@
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<!--
-	while(true){
-		Vocalizer.apologize("Sorry for my poor html! Just pretend it's the 90's");
-	}
-	--> 
+	Made with <3 by Chris Crockett
+	Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
+	-->
 	<head>
-		<link rel="stylesheet" type="text/css" href="basicPage.css">
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 		<link rel="shortcut icon" href="images/favicon.ico" />
-		<title>Awards and Recommendations</title>
-		<a href="index.html"><img src="images\chaofacex64.png" /></a>
-		<center id="webtitle"><h1>chaorace -- Awards and Recommendations</h1></center>
-		<hr />
+		<title>Inconsistently named site</title>
+		<script src="intros.js"></script>
 	</head>
-	<section>
-		<h2>Awards:</h2>
-		<guideText>
-			<h3>Intermediate Programming Excellence Award</h3>
-			<a href="images\awards\IntermediateProgrammingAward.jpg"><img src="images\awards\IntermediateProgrammingAward.jpg" /></a>
-			<br />
-			Awarded to one student per course for academic merit. My favorite achievement of all time
-			<br />
-			<h3>Red Cross Award</h3>
-			<a href="images\awards\RedCrossAward.jpg"><img src="images\awards\RedCrossAward.jpg" /></a>
-			<br />
-			Awarded for using CPR to save my dad's life
-		</guideText>
-		<h2>Recommendations:</h2>
-		<guideText>
-			<h3>Gary Ravenscroft</h3>
-			<a href="images\awards\RavenscroftRecommendation.jpg"><img src="images\awards\RavenscroftRecommendation.jpg" /></a>
-			<br />
-			Written by one of the teachers and mentors I respect most
-			<br />
-			<br />
-			<h3>Mathew Tener</h3>
-			<a href="https://drive.google.com/open?id=0BzRHuYM0ypGoNEVaOUhhYmdvekhlLWVzQnJSNWdCVlBDQlYw&authuser=0">Google Docs</a>
-			<br />
-			Written by the teacher I've worked with as an assistant for 4 collective periods
-		</guideText>
-		<a href="index.html">Home</a>
-	</section>
+	<div id="header">
+		<h1 onclick="headerClicked();">chaorace is <span id="introField">sad you don't use javascript</span> //Chris Crockett</h1>
+		<div id="menu">
+			<ul id="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">Resume</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li><a href="#">Awards</a></li>
+				<li><a href="contact.html">Contact Info</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div id="right">
+			<h1>Awards:</h1>
+			<div id="seperator">
+				<div id="award">
+					<h2>Intermediate Programming Excellence Award</h2>
+					<b>North Cobb High School</b>
+					<br /><br />
+					<i>Certificate of Merit</i>
+					<br />
+					Presented to
+					<br />
+					<b><i>Christopher Crockett</b></i>
+					<br />
+					In Recognition of Academic Excellence
+					<br />
+					<i>Intermediate Programming</i>
+					<br />
+					<a href="images\awards\IntermediateProgrammingAward.jpg">Image</a>
+				</div>
+				<div id="award">
+					<h2>Red Cross Award</h2>
+					<b>Certificate of Recognition</b>
+					<br />
+					<i>for</i>
+					<br />
+					<b>Extraordinary Personal Action</b>
+					<br />
+					<i>awarded to</i>
+					<br />
+					<b>Christopher Crockett</b>
+					<br />
+					<i>for using American Red Cross lifesaving skills</i>
+					<br />
+					<a href="images\awards\RedCrossAward.jpg">Image</a>
+				</div>
+			</div>
+			<div id="seperator">
+				<h1>Recommendations:</h1>
+				<h2>Gary Ravenscroft - Economics Teacher</h2>
+				<a href="images\awards\RavenscroftRecommendation.jpg">Image</a>
+				<br />
+				<br />
+				<br />
+				<h2>Mathew Tener - Technology Teacher/Mentor</h2>
+				<a href="https://drive.google.com/open?id=0BzRHuYM0ypGoNEVaOUhhYmdvekhlLWVzQnJSNWdCVlBDQlYw&authuser=0">Text</a>
+				<br />
+				<a href="index.html">Home</a>
+			</div>
+		</div>
+	</div>
+</div>
 </html>
