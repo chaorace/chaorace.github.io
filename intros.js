@@ -47,7 +47,6 @@ var intros = [
     "updating...",
     "imploding...",
     "a tunnel snake (they rule)",
-    "🐙🐙🐙🐙🐙🐙,
     "made with ❤️",
     "brought to you by Comcast©",
     "bad at DI",
