@@ -1,5 +1,8 @@
 //Justin told me to write this comment: Member of ISIS
 
+var zalgo = "Z̴͗̈͆̆̓ͬ̈́̿͐̎̍̉̍̈̓ͮ̋͒͝A̽͗͛͑̎͑̉̍͆͘͢Ļ̴͂̒ͮ͛͐͛ͬ̀ͬ͆ͫ͒̾ͦ͒ͬͮ̅̀Ġ̷̸͌̿ͥ̓̊ͯ̔͐̓ͣ͐̏̌͛ͧͣ̚̚҉O̴̶̊͂ͮ̈̿͊̎́̿͌ͭ͛̂͋ͣ!͊ͦͭ̇ͧͬ̽̌̒̓͗͐;
+
+//Intros should be 30 characters or less to avoid ugly wrapping
 var intros = [
     "the one and only",
     "fast and perturbed",
@@ -11,15 +14,13 @@ var intros = [
     "faking it and making it",
     "in the third person",
     "losing sleep",
-    "readonly public static object with public sealed class trait extends with SEND_HELP_PLEASE",
-    "inbred",
     "interactive",
     "pretending to work",
     "powered by IE6",
     "not-such-a-BOFH",
     "love",
     "[CLICK ME!]",
-    "chaorace is chaorace is chaorace is chaorace is chaorace is chaorace is",
+    "chaorace is chaorace is",
     "headbanging",
     "life",
     "caffeine-free",
@@ -37,11 +38,15 @@ var intros = [
     "kill. no",
     "on the edge of tommorow",
     "flying on a magic text-editor",
-    "pretty ordinary(?)",
     "a starship captain",
     "a flying laser monkey",
     "a spiky hedgehog",
-    "Z̴͗̈͆̆̓ͬ̈́̿͐̎̍̉̍̈̓ͮ̋͒͝A̽͗͛͑̎͑̉̍͆͘͢Ļ̴͂̒ͮ͛͐͛ͬ̀ͬ͆ͫ͒̾ͦ͒ͬͮ̅̀Ġ̷̸͌̿ͥ̓̊ͯ̔͐̓ͣ͐̏̌͛ͧͣ̚̚҉O̴̶̊͂ͮ̈̿͊̎́̿͌ͭ͛̂͋ͣ!͊ͦͭ̇ͧͬ̽̌̒̓͗͐"
+    zalgo, //Written somewhere else to preserve my sanity while editing
+    "collecting redstone",
+    "spinning up...",
+    "updating...",
+    "imploding",
+    "just a clever visual metaphor"
   ];
 
 var postLoad = setTimeout(main, 100)
