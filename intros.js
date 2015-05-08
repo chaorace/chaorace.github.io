@@ -46,7 +46,7 @@ var intros = [
     "spinning up...",
     "updating...",
     "imploding",
-    "a clever visual metaphor"
+    "tunnel snake(they rule)"
   ];
 
 var postLoad = setTimeout(main, 100)
