@@ -46,7 +46,8 @@ var intros = [
     "spinning up...",
     "updating...",
     "imploding",
-    "a tunnel snake (they rule)"
+    "a tunnel snake (they rule)",
+    "🐙🐙🐙🐙🐙🐙"
   ];
 
 var postLoad = setTimeout(main, 100)
