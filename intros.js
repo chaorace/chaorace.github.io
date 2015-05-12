@@ -65,11 +65,11 @@ var intros = [
     "↑↑↓↓←→←→ B A Start",
     "tʃɑo ˈreɪs̯",
     "🐙🐙🐙🐙🐙🐙"
-    
+
   ];
 
 var postLoad = setTimeout(main, 100)
-var headerTimer = setTimeout(main, 7000);
+var headerTimer = setInterval(main, 7000);
 
 function main(){
   document.getElementById("introField").innerHTML = intros[getRandomInt(0, intros.length)]
