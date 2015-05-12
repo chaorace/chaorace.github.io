@@ -68,9 +68,15 @@ var intros = [
     "EZ $$$",
     "dropping packets",
     "in faze clan",
-    "winning"
-
-
+    "winning",
+    "BRAAAAAP",
+    "[EXPLETIVE]!",
+    "redecompiling...",
+    "derecompiling...",
+    "Beep-Boop!",
+    "rebasing.....",
+    "at the bottom of a well",
+    "wandering AND lost"
   ];
 
 var postLoad = setTimeout(main, 100)
