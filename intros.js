@@ -64,7 +64,12 @@ var intros = [
     "running out of entropy",
     "↑↑↓↓←→←→ B A Start",
     "tʃɑo ˈreɪs̯",
-    "🐙🐙🐙🐙🐙🐙"
+    "🐙🐙🐙🐙🐙🐙",
+    "EZ $$$",
+    "dropping packets",
+    "in faze clan",
+    "winning"
+
 
   ];
 
