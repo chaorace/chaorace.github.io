@@ -11,7 +11,11 @@
 		<script src="intros.js"></script>
 	</head>
 	<div id="header">
-		<h1 onclick="headerClicked();">chaorace is <span id="introField">sad you don't use javascript</span> //Chris Crockett</h1>
+		<!--
+		Page header blurb. Uses intros.js to cycle through intros over time and when clicked.
+		Highlighting is disabled because the sudden length changes when clicking creates unwanted highlighting
+		-->
+		<div id="nohighlight"><h1 onclick="headerClicked();">chaorace is <span id="introField">sad you don't use javascript</span> //Chris Crockett</h1></div>
 		<div id="menu">
 			<ul id="nav">
 				<li><a href="index.html">Home</a></li>
