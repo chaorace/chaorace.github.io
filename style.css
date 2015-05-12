@@ -19,6 +19,14 @@ ul#nav li.activelink a,ul#nav li.activelink a:hover{background: #FFF;color: #003
 div#award{float: left;text-align: center;margin: 10px;margin-left: 50px}
 div#recommendation{float: left;text-align: left;margin: 10px;margin-left: 50px}
 ul#resumebullet{font: bold 1.05em Arial, Arial, Sans-Serif;}
+div#nohighlight{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 div#seperator{clear: both;}
 
