@@ -76,7 +76,13 @@ var intros = [
     "Beep-Boop!",
     "rebasing.....",
     "at the bottom of a well",
-    "wandering AND lost"
+    "wandering AND lost",
+    "exploring the 'verse",
+    "aging sideways",
+    "_ _ _ _ _",
+    "at critical mass",
+    "worse than vogon poetry"
+    
   ];
 
 var postLoad = setTimeout(main, 100)
