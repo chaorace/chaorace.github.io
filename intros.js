@@ -86,7 +86,14 @@ var intros = [
     "permeating the ether",
     "a little stinky",
     "a rockstar",
-    "the king of swing"
+    "the king of swing",
+    "locked into specialfall",
+    "running out of ideas",
+    "hidden in plain sight",
+    "OBJECTION!",
+    "covered in thermal paste",
+    "just a mook",
+    "in the sky with diamonds"
     
   ];
 
