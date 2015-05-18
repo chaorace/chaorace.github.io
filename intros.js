@@ -81,7 +81,12 @@ var intros = [
     "aging sideways",
     "_ _ _ _ _",
     "at critical mass",
-    "worse than vogon poetry"
+    "worse than vogon poetry",
+    ">/dev/null",
+    "permeating the ether",
+    "a little stinky",
+    "a rockstar",
+    "the king of swing"
     
   ];
 
