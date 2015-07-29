@@ -99,7 +99,7 @@ var intros = [
     "beheaded at Baelor's Sept",
     "the leg-in-dairy memer",
     "JOHN MADDEN!",
-    "JON CENA!",
+    "JOHN CENA!",
     "FOOTBALL!",
     "Ebrbrbrbrbbrbrbr"
     
