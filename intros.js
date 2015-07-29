@@ -36,7 +36,7 @@ var intros = [
     "getting brigaded",
     "cow-ace",
     "kill. no",
-    "on the edge of tommorow",
+    "on the edge of tomorrow",
     "flying on a magic text-editor",
     "a starship captain",
     "a flying laser monkey",
