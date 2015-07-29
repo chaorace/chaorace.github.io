@@ -214,6 +214,22 @@
 				</li>
 				<br />
 				<li>
+					Players -- Handles tracking allies
+					<br />
+					Triggers:
+					<ul>
+						<li>TargetAlly0/1 -- (Boolean) Handles targeting allies. Keep held to keep targetting the specified ally</li>
+					</ul>
+					Events:
+					<ul>
+						<li>Self/Ally0/Ally1Class -- (Counter - Uses Enumerator) Represents the class of the specified character. Uses enumerators from the Class enumerator section of the Constants Toolkit Event file.</li>
+						<li>Ally(0/1)Health -- (Counter) Represents the health as a percentage rounded down in increments of 5 (100, 95, 90...)</li>
+						<li>Ally/FoeCount -- (Counter) Represents the number of living allies/foes</li>
+						<li>Lane(0/1)Population -- (Counter) Represents the number of allies in the given lane. Lane0 is the top lane, Lane1 is the bottom lane.</li>
+					</ul>
+				</li>
+				<br />
+				<li>
 					WaypointPlus -- Handles advanced locational awareness and custom pathing. Uses unusual tree structures that break convention for the sake of extensibility, this file is a bad example of how to make an AwesomeAI toolkit.
 					<br />
 					Triggers:
