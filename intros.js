@@ -93,7 +93,11 @@ var intros = [
     "OBJECTION!",
     "covered in thermal paste",
     "just a mook",
-    "in the sky with diamonds"
+    "in the sky with diamonds",
+    "the color of Octarine",
+    "vacationing in Ankh-Morpork",
+    "beheaded before the Sept of Baelor",
+    "the leg-in-dairy memer"
     
   ];
 
