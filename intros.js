@@ -96,7 +96,7 @@ var intros = [
     "in the sky with diamonds",
     "the color of Octarine",
     "vacationing in Ankh-Morpork",
-    "beheaded at the Sept of Baelor",
+    "beheaded at Baelor's Sept",
     "the leg-in-dairy memer",
     "JOHN MADDEN!",
     "JON CENA!",
