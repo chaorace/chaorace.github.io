@@ -96,7 +96,7 @@ var intros = [
     "in the sky with diamonds",
     "the color of Octarine",
     "vacationing in Ankh-Morpork",
-    "beheaded before the Sept of Baelor",
+    "beheaded at the Sept of Baelor",
     "the leg-in-dairy memer"
     
   ];
