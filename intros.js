@@ -97,7 +97,11 @@ var intros = [
     "the color of Octarine",
     "vacationing in Ankh-Morpork",
     "beheaded at the Sept of Baelor",
-    "the leg-in-dairy memer"
+    "the leg-in-dairy memer",
+    "JOHN MADDEN!",
+    "JON CENA!",
+    "FOOTBALL!",
+    "Ebrbrbrbrbbrbrbr"
     
   ];
 
