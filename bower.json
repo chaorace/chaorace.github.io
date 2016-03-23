@@ -1,0 +1,25 @@
+{
+  "name": "chaorace.github.io",
+  "homepage": "https://github.com/chaorace/chaorace.github.io",
+  "description": "My website",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "site"
+  ],
+  "authors": [
+    "chaorace"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-elements": "Polymer/paper-elements#^0.5.6"
+  }
+}
