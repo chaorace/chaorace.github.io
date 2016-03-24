@@ -101,8 +101,17 @@ var intros = [
     "JOHN MADDEN!",
     "JOHN CENA!",
     "FOOTBALL!",
-    "Ebrbrbrbrbbrbrbr"
-    
+    "Ebrbrbrbrbbrbrbr",
+	"unreasonably upset",
+	"🍆",
+    "( ͡° ͜ʖ ͡°)",
+	"wasting your time",
+	"Bidoof",
+	"a material (design) boy",
+	"Sanders 2016!!",
+	"KOBE!",
+	"back at it with the white vans",
+	"unemployed and depressed"
   ];
 
 var postLoad = setTimeout(main, 100)
