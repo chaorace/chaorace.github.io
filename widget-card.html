@@ -1,0 +1,20 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+
+
+<dom-module id="widget-card">
+  <template>
+    <paper-card style="padding:.5em;">
+      <paper-fab src="images/icons/steam.png" title="Steam" onclick="window.open('http://steamcommunity.com/profiles/76561198035636321','_blank');"></paper-fab>
+      <paper-fab src="images/icons/reddit.png" title="Reddit" onclick="window.open('https://www.reddit.com/user/chaorace','_blank');"></paper-fab>
+      <paper-fab src="images/icons/github-circle.png" title="Github" onclick="window.open('https://github.com/chaorace','_blank');"></paper-fab>
+      <paper-fab src="images/icons/facebook-box.png" title="Facebook" onclick="window.open('https://www.facebook.com/chris.crockett.9615','_blank');"></paper-fab>
+    </paper-card>
+  </template>
+  <script>
+  Polymer({
+    is: "widget-card"
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+
+<dom-module id="projects-card">
+  <template>
+    <paper-card style="width:90%; min-width:2em;">
+      <paper-header-panel style="background-color:#3949AB">
+        <paper-toolbar>
+          <span class="title">Projects</span>
+        </paper-toolbar>
+      </paper-header-panel>
+      <div style="padding:1em;">
+        <ul>
+          <li>
+            <h3>AwesomeAI</h2>
+            <ul>
+              <li>A (WIP) bot AI replacement for the Indie 2D MOBA <a href="http://www.awesomenauts.com/">Awesomenauts</a></li>
+              <li><a href="https://github.com/chaorace/YuriAI">Github Project</a></li>
+              <li>Shelved</li>
+            </ul>
+          </li>
+          <li>
+            <h3>VirtualTrackball</h2>
+            <ul>
+              <li>A utility that emulates a trackball using mouse inputs</li>
+              <li><href="https://github.com/chaorace/VirtualTrackball">Github Project</a></li>
+              <li>Completed</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Bot-Collab-Toolkits</h2>
+            <ul>
+              <li>A toolkit for facilitating a standard communication pattern between Awesomenauts bots</li>
+              <li>Collaboratively written with <a href="https://github.com/dillmo">Ignotis</a></li>
+              <li><a href="https://github.com/dillmo/Bot-Collab-Toolkits">Github Project</a></li>
+              <li>Completed</li>
+            </ul>
+          </li>
+          <li>
+            <h3>TeamReader</h2>
+            <ul>
+              <li>Software that transcribes Teamspeak chat to speech</li>
+              <li>Made using <a href="http://espeak.sourceforge.net/">eSpeak</a> by <a href="http://sourceforge.net/u/jonsd/profile/">Jonathan Duddington</a> </li>
+              <li><a href="guides/teamreader.html">Final Release</a></li>
+              <li>Completed</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Videos</h2>
+            <ul>
+              <li>I occasionally produce content on Youtube and Twitch.tv!</li>
+              <li><a href="https://www.youtube.com/channel/UCenwrbNUyO_49h54-wxZKbg">Youtube</a></li>
+              <li><a href="http://www.twitch.tv/chaorace">Twitch.tv</a></li>
+              <iframe width="560" height="315" src="//www.youtube.com/embed/6hEbkwwwzn0" frameborder="0" allowfullscreen></iframe>
+              <li>Lightly developed</li>
+            </ul>
+          </li>
+          <li>
+            <h3>This Webpage!</h2>
+            <ul>
+              <li>My own personal steaming dump of ASCII and markup on the internet</li>
+              <li>Actively developed</li>
+            </ul>
+          </li>
+        </ul>
+        <h2>Derivative Works</h1>
+        <ul>
+          <li>
+            <h3>YuriAI</h2>
+            <ul>
+              <li>A bot AI for <a href="http://www.awesomenauts.com/">Awesomenauts</a></li>
+              <li>Created by <a href="https://github.com/dillmo">Ignotis</a> (unaffiliated with me)</li>
+              <li><a href="http://www.awesomenauts.com/forum/viewtopic.php?f=23&t=35829&sid=f26f93a4dadb01e6176b3cd1ac143b9b">Release Page</a></li>
+              <li>Utilizes (with my full permission) large amounts of movement and skill logic from my Yuribot project</li>
+              <li><a href="http://www.awesomenauts.com/forum/viewtopic.php?f=19&t=35908">Currently implemented in-game</a></li>
+            </ul>
+          </li>
+        </ul>
+        <h2>Guides</h1>
+        <ul>
+          <li>
+            <a href="guides/httptunnel.html"><h3>HTTPTunnel Windows</h2></a>
+            <ul>
+              <li>A guide for creating an HTTP proxy server and accessing it remotely</li>
+              <li><a href="guides/httptunnel.html">Published Here</a></li>
+              <li><a href="https://pay.reddit.com/r/hearthstone/comments/2okctp/weekly_rantrage_thread_gnome_or_goblin_we_fucking/cmoageg">Created for /u/mcpower_</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="guides/teamreader.html"><h3>TeamReader Windows</h2></a>
+            <ul>
+              <li>A guide to using TeamReader TTS with TeamSpeak!</li>
+              <li><a href="guides/teamreader.html">Published Here</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="guides/AwesomeAI.html"><h3>AwesomeAI</h2></a>
+            <ul>
+              <li>A starter guide to using AwesomeAI</li>
+              <li><a href="guides/AwesomeAI.html">Published Here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+  Polymer({
+    is: "projects-card"
+  });
+  </script>
+</dom-module>

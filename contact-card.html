@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+
+<dom-module id="contact-card">
+  <template>
+  <paper-card style="width:90%; min-width:2em">
+    <paper-header-panel style="background-color:#3949AB">
+      <paper-toolbar>
+        <span class="title">Contact Info</span>
+      </paper-toolbar>
+    </paper-header-panel>
+    <ul>
+      <li>Email: <a href="mailto:chaorace@gmail.com" target="_top">chaorace@gmail.com</a></li>
+      <li>Phone: 770-966-9195</li>
+      <li>Skype: chaorace</li>
+      <li>BattleTag: chaorace#1787</li>
+      <li>Nintendo Friendcode: 2595-1530-9428</li>
+    </ul>
+  </paper-card>
+</template>
+<script>
+Polymer({
+  is: "contact-card"
+});
+</script>
+</dom-module>

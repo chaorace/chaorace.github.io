@@ -1,0 +1,24 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+
+<dom-module id="face-card">
+  <template>
+  <style>
+    paper-card{
+      color: #E3F2FD;
+      background-color: #3949AB;
+    }
+    .header {
+      @apply(--paper-font-headline);
+    }
+  </style>
+    <paper-card image="images/coverImage.jpg">
+      <div class="header" style="padding:.25em;">Chris Crockett</div>
+    </paper-card>
+  </template>
+  <script>
+  Polymer({
+    is: "face-card"
+  });
+  </script>
+</dom-module>

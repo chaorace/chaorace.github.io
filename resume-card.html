@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="bower_components/google-doc/google-doc.html">
+
+<dom-module id="resume-card">
+  <template>
+    <paper-card style="width:90%; min-width:2em">
+      <paper-header-panel style="background-color:#3949AB">
+        <paper-toolbar>
+          <span class="title">Resume</span>
+        </paper-toolbar>
+      </paper-header-panel>
+      <div style="padding:2em;">
+        <google-doc key="1g7QK0Y8bljoBLE0ar07E3MW0MkTjIcasZL6f2CDk84Y"></google-doc>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+  Polymer({
+    is: "resume-card"
+  });
+  </script>
+</dom-module>

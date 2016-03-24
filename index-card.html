@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+
+<dom-module id="index-card">
+  <template>
+  <paper-card style="width:90%; min-width:2em">
+    <paper-header-panel style="background-color:#3949AB">
+      <paper-toolbar>
+        <span class="title">Who is chaorace?</span>
+      </paper-toolbar>
+    </paper-header-panel>
+    <ul>
+      <li>chaorace is object-oriented</li>
+      <li>chaorace is extensible</li>
+      <li>chaorace is strongly typed</li>
+      <li>chaorace is <b>Christopher Crockett</b>:</li>
+      <ul>
+        <li>Java/Scala programmer</li>
+        <li>AI writer</li>
+        <li>Former Assistant Technology Teacher</li>
+        <li>Gamer</li>
+        <li>Technology Student in the Atlanta area</li>
+        <li>Overall Freelancer Extraordinaire!</li>
+      </ul>
+    </ul>
+  </paper-card>
+</template>
+<script>
+Polymer({
+  is: "index-card"
+});
+</script>
+</dom-module>
