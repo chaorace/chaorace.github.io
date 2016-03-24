@@ -4,6 +4,10 @@ body {
       -webkit-font-smoothing: antialiased;
 }
 
+paper-fab{
+  margin: .5em;
+}
+
 #noHighlight{
   -webkit-touch-callout: none;
   -webkit-user-select: none;
