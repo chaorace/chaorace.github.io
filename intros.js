@@ -111,7 +111,9 @@ var intros = [
 	"Sanders 2016!!",
 	"KOBE!",
 	"back at it with the white vans",
-	"unemployed and depressed"
+	"unemployed and depressed",
+  "ja boi!!",
+  "5% off with TEMPO"
   ];
 
 var postLoad = setTimeout(main, 100)
