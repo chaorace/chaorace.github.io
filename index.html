@@ -1,56 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<!--
-	Made with <3 by Chris Crockett
-	Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
-	-->
-	<head>
-		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<title>Inconsistently named site</title>
-		<script src="intros.js"></script>
-	</head>
-	<div id="header">
-		<!--
-		Page header blurb. Uses intros.js to cycle through intros over time and when clicked.
-		Highlighting is disabled because the sudden length changes when clicking creates unwanted highlighting
-		-->
-		<div id="nohighlight"><h1 onclick="headerClicked();">chaorace is <span id="introField">sad you don't use javascript</span> //Chris Crockett</h1></div>
-		<div id="menu">
-			<ul id="nav">
-				<li><a href="#">Home</a></li>
-				<li><a href="resume.html">Resume</a></li>
-				<li><a href="projects.html">Projects</a></li>
-				<li><a href="awards.html">Awards</a></li>
-				<li><a href="contact.html">Contact Info</a></li>
-				<li><a href="http://chaorace.github.io/MutteringsOfAFraud/">Mutterings</a></li>
-			</ul>
+<!--
+Made with <3 by Chris Crockett
+Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
+-->
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<link rel="import" href="bower_components/paper-styles/typography.html">
+	<link rel="import" href="bower_components/paper-styles/typography.html">
+
+	<link rel="import" href="bower_components/webcomponentsjs/webcomponents-lite.min.js">
+
+	<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+	<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+	<link rel="import" href="bower_components/paper-tabs/paper-tab.html">
+	<link rel="import" href="bower_components/paper-card/paper-card.html">
+	<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+	<link rel="import" href="bower_components/paper-material/paper-material.html">
+
+	<link rel="import" href="bower_components/neon-animation/animations/slide-left-animation.html">
+	<link rel="import" href="bower_components/neon-animation/animations/fade-in-animation.html">
+	<link rel="import" href="bower_components/neon-animation/animations/fade-out-animation.html">
+	<link rel="import" href="bower_components/neon-animation/animations/cascaded-animation.html">
+	<link rel="import" href="bower_components/neon-animation/neon-animated-pages.html">
+	<link rel="import" href="bower_components/neon-animation/neon-animatable.html">
+
+	<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+
+
+	<link rel="import" href="index-card.html">
+	<link rel="import" href="face-card.html">
+	<link rel="import" href="resume-card.html">
+	<link rel="import" href="resumenotice-card.html">
+	<link rel="import" href="projects-card.html">
+	<link rel="import" href="awards-card.html">
+	<link rel="import" href="contact-card.html">
+	<link rel="import" href="widget-card.html">
+
+
+	<title>Inconsistently named site</title>
+	<script src="intros.js"></script>
+</head>
+<body>
+	<paper-header-panel class="flex">
+		<paper-toolbar>
+			<div class="vertical layout" onclick="headerClicked();" id="blurbBox">
+				<div id="noHighlight">
+					<div class="title">chaorace is <span id="introField">sad you don't use javascript</span></div>
+					<div style="text-align:center;">//Chris Crockett</div>
+				</div>
+			</div>
+			<paper-tabs selected="0" noink class="flex">
+				<paper-tab>Home</paper-tab>
+				<paper-tab>Resume</paper-tab>
+				<paper-tab>Projects</paper-tab>
+				<paper-tab>Awards</paper-tab>
+				<paper-tab>Contact</paper-tab>
+				<paper-tab>Mutterings</paper-tab>
+			</paper-tabs>
+		</paper-toolbar>
+	</paper-header-panel>
+	<br />
+	<div class="horizontal start-justified layout" style="margin-right: auto; margin-left: auto; width: 80%">
+		<div class="flex-3">
+			<neon-animated-pages selected="0" entry-animation="fade-in-animation" exit-animation="slide-left-animation" id="content cards">
+				<neon-animatable><index-card></index-card></neon-animatable>
+				<neon-animatable><resume-card></resume-card></neon-animatable>
+				<neon-animatable><projects-card></projects-card></neon-animatable>
+				<neon-animatable><awards-card></awards-card></neon-animatable>
+				<neon-animatable><contact-card></contact-card></neon-animatable>
+				<neon-animatable></neon-animatable>
+			</neon-animated-pages>
+		</div>
+		<div class="flex">
+			<neon-animated-pages selected="1" entry-animation="fade-in-animation" exit-animation="fade-out-animation" id="side cards">
+				<neon-animatable></neon-animatable>
+				<neon-animatable><face-card></face-card></neon-animatable>
+				<neon-animatable><resumenotice-card></resumenotice-card></neon-animatable>
+				<neon-animatable><widget-card></widget-card></neon-animatable>
+			</neon-animated-pages>
 		</div>
 	</div>
-	<div id="content">
-		<div id="right">
-		<h1>Who is chaorace?</h1>
-			<ul>
-				<li>chaorace is object-oriented</li>
-				<li>chaorace is extensible</li>
-				<li>chaorace is strongly typed</li>
-				<li>chaorace is <b>Christopher Crockett</b>:</li>
-				<ul>
-					<li>Java/Scala programmer</li>
-					<li>AI writer</li>
-					<li>Former Assistant Technology Teacher</li>
-					<li>Gamer</li>
-					<li>Technology Student in the Atlanta area</li>
-					<li>Overall Freelancer Extraordinaire!</li>
-				</ul>
-			</ul>
-			<p>2016</p>
-		</div>
-	</div>
-	<div id="left">
-		<div class="box">
-			<img src="images/coverImage.jpg" height="25%" onmouseover="this.src='images/cfalcon.png'" onmouseout="this.src='images/coverImage.jpg'"/>
-		</div>
-	</div>
+	<script>
+	setTimeout(function(){
+		document.querySelector('paper-tabs').addEventListener('iron-select', function(e){
+			var pages = document.getElementById('content cards');
+			var sidePages = document.getElementById('side cards');
+			var tabs = document.querySelector('paper-tabs');
+
+			pages.select(tabs.selected);
+			switch (tabs.selected) {
+				case 0:
+					sidePages.select(1);
+					break;
+				case 1:
+					sidePages.select(2);
+					break;
+				case 4:
+					sidePages.select(3);
+					break;
+				case 5:
+					window.open("http://chaorace.github.io/MutteringsOfAFraud/", "_blank");
+					tabs.select(0);
+					break;
+				default:
+					sidePages.select(0);
+			}
+		});
+	}, 300);
+
+	</script>
+</body>
 </html>
