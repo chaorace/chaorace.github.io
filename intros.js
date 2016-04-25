@@ -114,7 +114,7 @@ var intros = [
     "unemployed and depressed",
     "ja boi!!",
     "5% off with TEMPO",
-    "MACINTOSH PLUS - リサフランク",
+    "MACINTOSH PLUS - リサフ",
     "C'Thun'd up",
     "Kony 2012!!",
     "voiding warranties",
