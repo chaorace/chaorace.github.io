@@ -4,6 +4,8 @@
 <!--
 Made with <3 by Chris Crockett
 Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
+
+Click the Projects tab three times in a row for a special surprise
 -->
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
@@ -34,6 +36,7 @@ Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
 	<link rel="import" href="contact-card.html">
 	<link rel="import" href="widget-card.html">
 
+	<audio src="macintosh.mp3" type="audio/mpeg"></audio>
 
 	<title>Inconsistently named site</title>
 	<script src="intros.js"></script>
@@ -50,7 +53,7 @@ Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
 			<paper-tabs selected="0" noink class="flex">
 				<paper-tab>Home</paper-tab>
 				<paper-tab>Resume</paper-tab>
-				<paper-tab>Projects</paper-tab>
+				<paper-tab id="easterEgg">Projects</paper-tab>
 				<paper-tab>Awards</paper-tab>
 				<paper-tab>Contact</paper-tab>
 				<paper-tab>Mutterings</paper-tab>
@@ -79,6 +82,9 @@ Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
 		</div>
 	</div>
 	<script>
+	var eggaudio = document.querySelector('audio');
+	var egg = 0;
+
 	setTimeout(function(){
 		document.querySelector('paper-tabs').addEventListener('iron-select', function(e){
 			var pages = document.getElementById('content cards');
@@ -86,6 +92,10 @@ Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
 			var tabs = document.querySelector('paper-tabs');
 
 			pages.select(tabs.selected);
+			if(tabs.selected !== 2){
+				egg = 0;
+			}
+
 			switch (tabs.selected) {
 				case 0:
 					sidePages.select(1);
@@ -103,7 +113,14 @@ Credit to lazar from http://www.oswd.org/user/profile/id/12756/ for the css
 				default:
 					sidePages.select(0);
 			}
+
 		});
+		document.getElementById('easterEgg').addEventListener("click", function(){
+			egg = egg + 1;
+			if(egg === 3){
+				eggaudio.play();
+			}
+		})
 	}, 300);
 
 	</script>
