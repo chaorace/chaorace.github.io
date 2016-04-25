@@ -102,18 +102,18 @@ var intros = [
     "JOHN CENA!",
     "FOOTBALL!",
     "Ebrbrbrbrbbrbrbr",
-	"unreasonably upset",
-	"🍆",
+    "unreasonably upset",
+    "🍆",
     "( ͡° ͜ʖ ͡°)",
-	"wasting your time",
-	"Bidoof",
-	"a material (design) boy",
-	"Sanders 2016!!",
-	"KOBE!",
-	"back at it with the white vans",
-	"unemployed and depressed",
-  "ja boi!!",
-  "5% off with TEMPO"
+    "wasting your time",
+    "Bidoof",
+    "a material (design) boy",
+    "Sanders 2016!!",
+    "KOBE!",
+    "back at it with the white vans",
+    "unemployed and depressed",
+    "ja boi!!",
+    "5% off with TEMPO"
   ];
 
 var postLoad = setTimeout(main, 100)
