@@ -102,19 +102,26 @@ var intros = [
     "JOHN CENA!",
     "FOOTBALL!",
     "Ebrbrbrbrbbrbrbr",
-	"unreasonably upset",
-	"🍆",
+    "unreasonably upset",
+    "🍆",
     "( ͡° ͜ʖ ͡°)",
-	"wasting your time",
-	"Bidoof",
-	"a material (design) boy",
-	"Sanders 2016!!",
-	"KOBE!",
-	"back at it with the white vans",
-	"unemployed and depressed",
-  "ja boi!!",
-  "5% off with TEMPO"
-  ];
+    "wasting your time",
+    "Bidoof",
+    "a material (design) boy",
+    "Sanders 2016!!",
+    "KOBE!",
+    "back at it with the white vans",
+    "unemployed and depressed",
+    "ja boi!!",
+    "5% off with TEMPO",
+    "MACINTOSH PLUS - リサフ",
+    "C'Thun'd up",
+    "Kony 2012!!",
+    "voiding warranties",
+    "eating potatos",
+    "mission accomplished",
+    "◖|◔◡◉|◗"
+];
 
 var postLoad = setTimeout(main, 100)
 var headerTimer = setInterval(main, 7000);
