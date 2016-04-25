@@ -82,15 +82,15 @@ Click the Projects tab three times in a row for a special surprise
 		</div>
 	</div>
 	<script>
+	var pages = document.getElementById('content cards');
+	var sidePages = document.getElementById('side cards');
+	var tabs = document.querySelector('paper-tabs');
+
 	var eggaudio = document.querySelector('audio');
 	var egg = 0;
 
 	setTimeout(function(){
 		document.querySelector('paper-tabs').addEventListener('iron-select', function(e){
-			var pages = document.getElementById('content cards');
-			var sidePages = document.getElementById('side cards');
-			var tabs = document.querySelector('paper-tabs');
-
 			pages.select(tabs.selected);
 			if(tabs.selected !== 2){
 				egg = 0;
