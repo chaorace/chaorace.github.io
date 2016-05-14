@@ -120,7 +120,10 @@ var intros = [
     "voiding warranties",
     "eating potatos",
     "mission accomplished",
-    "◖|◔◡◉|◗"
+    "◖|◔◡◉|◗",
+    "dat boi",
+    "senpaaaaaai~~",
+    "the roundabout"
 ];
 
 var postLoad = setTimeout(main, 100)
