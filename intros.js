@@ -123,7 +123,10 @@ var intros = [
     "◖|◔◡◉|◗",
     "dat boi",
     "senpaaaaaai~~",
-    "the roundabout"
+    "the roundabout",
+    "ZE WARUDO",
+    "tipping the scales",
+    "how you get tinnitus"
 ];
 
 var postLoad = setTimeout(main, 100)
