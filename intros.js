@@ -126,7 +126,10 @@ var intros = [
     "the roundabout",
     "ZE WARUDO",
     "tipping the scales",
-    "how you get tinnitus"
+    "how you get tinnitus",
+    "WAKE ME UP INSIDE",
+    "(CAN'T WAKE UP)",
+    "employed and still depressed"
 ];
 
 var postLoad = setTimeout(main, 100)
