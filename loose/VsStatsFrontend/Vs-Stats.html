@@ -1,0 +1,224 @@
+<!--
+Made with <3 by Chris Crockett (chaorace@gmail.com) for Vicious Syndicate
+
+http://www.chaorace.github.io
+http://www.vicioussyndicate.com/
+
+Licensed under the MIT license
+-->
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="bower_components/google-chart/google-chart.html">
+<link rel="import" href="bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="bower_components/paper-date-picker/paper-date-picker.html">
+<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="bower_components/paper-time-picker/paper-time-picker.html">
+<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+
+
+<script src="bower_components/jquery-2.2.4.min/index.js"></script>
+
+<dom-module id="Vs-Stats">
+    <style include="iron-flex"></style>
+    <template>
+
+        <paper-drawer-panel style="height: 275px; width:605px; position:relative" force-narrow="true" drawer-width="350px" min-date="(2016-05-01)">
+            <paper-header-panel drawer>
+                <paper-date-picker force-narrow="true"></paper-date-picker>
+            </paper-header-panel>
+            <paper-card style="width:600px; height:270px" main>
+                <paper-header-panel>
+                    <paper-toolbar>
+                        <paper-icon-button paper-drawer-toggle icon="menu"></paper-icon-button>
+                        <span class="title">Vicious Syndicate Datareaper</span>
+                    </paper-toolbar>
+                    <div class="horizontal layout">
+                        <google-chart id="mainChart" type="pie" style="height: 200px; width: 200px">
+                        </google-chart>
+                        <neon-animated-pages id="classCharts" selected="9" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+                            <neon-animatable id="0"></neon-animatable>
+                            <neon-animatable id="1"></neon-animatable>
+                            <neon-animatable id="2"></neon-animatable>
+                            <neon-animatable id="3"></neon-animatable>
+                            <neon-animatable id="4"></neon-animatable>
+                            <neon-animatable id="5"></neon-animatable>
+                            <neon-animatable id="6"></neon-animatable>
+                            <neon-animatable id="7"></neon-animatable>
+                            <neon-animatable id="8"></neon-animatable>
+                            <neon-animatable><br><paper-spinner active></paper-spinner></neon-animatable>
+                        </neon-animated-pages>
+                    </div>
+                </paper-header-panel>
+            </paper-card>
+        </paper-drawer-panel>
+    </template>
+
+    <script>
+        //Function provided by bjornd at Stack Exchange
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        var baseJsonURL = "http://datareaper.fenom.me/meta";
+
+        Classes = {
+            DRUID: {
+                value: 0,
+                name: "Druid",
+                color: "663300"
+            },
+            HUNTER: {
+                value: 1,
+                name: "Hunter",
+                color: "00cc66"
+            },
+            MAGE: {
+                value: 2,
+                name: "Mage",
+                color: "009999"
+            },
+            PALADIN: {
+                value: 3,
+                name: "Paladin",
+                color: "999900"
+            },
+            PRIEST: {
+                value: 4,
+                name: "Priest",
+                color: "CCCC99"
+            },
+            ROGUE: {
+                value: 5,
+                name: "Rogue",
+                color: "333333"
+            },
+            SHAMAN: {
+                value: 6,
+                name: "Shaman",
+                color: "330099"
+            },
+            WARLOCK: {
+                value: 7,
+                name: "Warlock",
+                color: "663399"
+            },
+            WARRIOR: {
+                value: 8,
+                name: "Warrior",
+                color: "990000"
+            }
+        }
+
+        var mainChartData = [
+            ["Class", "Proportion"]
+        ];
+        var mainChartOptions = {
+            "legend": "none",
+            "colors": [],
+            "height": 200,
+            "width": 200,
+            "is3D": "true",
+            "slices": {
+                0: {
+                    offset: 0.3
+                },
+                1: {
+                    offset: 0.2
+                },
+                2: {
+                    offset: 0.1
+                }
+            }
+        };
+
+        $(function() {
+            var jsonURL = baseJsonURL;
+
+            $.getJSON(
+                jsonURL,
+                function(data) {
+
+
+                    for (var hero in Classes) {
+                        var heroDecks = data.decks[Object.keys(data.decks)[Classes[hero].value]];
+                        var heroDecksArray = [];
+                        var total = 0.0;
+
+                        for (var i in heroDecks) {
+                            total += heroDecks[i];
+                            heroDecksArray.push([i, heroDecks[i], `#${Classes[hero].color}`]);
+                        }
+                        heroDecksArray.splice(0, 0, ["Class", "Proportion", {
+                            role: 'style'
+                        }]);
+                        var chartData = escapeHtml(JSON.stringify(heroDecksArray));
+                        $(`#${Classes[hero].value}`).prepend(
+                            `<google-chart id="${Classes[hero].name}" type="column" options='{"legend": "none", "color": "#${Classes[hero].color}", "height": 200, "width": 400}' data="${chartData}" style="height: 200px; width: 400px""></google-chart>`
+                        );
+                        mainChartData.push([Classes[hero].name, total]);
+                    }
+
+                    //Sort classes by how heavily represented they are
+                    mainChartData.sort(function(a, b) {
+                        return a[1] - b[1];
+                    });
+
+                    //Messy logic for getting the right colors to appear in the right order. Necessary because of how google-charts handles colors
+                    for (var i in mainChartData) {
+                        for (var hero in Classes) {
+                            if (Classes[hero].name == mainChartData[i][0]) {
+                                mainChartOptions[Object.keys(mainChartOptions)[1]].push(Classes[hero].color);
+                            }
+                        }
+                    }
+
+                    $("#mainChart").attr("data", JSON.stringify(mainChartData));
+                    $("#mainChart").attr("options", JSON.stringify(mainChartOptions));
+
+                    document.getElementById("mainChart").drawChart();
+
+                    $("#mainChart").on("google-chart-select", function(x) {
+                        if (typeof x.target.selection[0] !== 'undefined') {
+
+                            var selection = x.target.selection[0].row;
+                            var selectionName = mainChartData[selection + 1][0];
+                            for (var hero in Classes) {
+                                if (Classes[hero].name == selectionName) {
+                                  document.getElementById("classCharts").select(Classes[hero].value);
+                                  return;
+                                }
+                            }
+                        }
+                    })
+                    var topHeroName = mainChartData[9][0];
+                    for (var hero in Classes) {
+                        if (Classes[hero].name == topHeroName) {
+                            document.getElementById("classCharts").select(Classes[hero].value);
+                            return;
+                        }
+                    }
+                });
+        });
+    </script>
+
+    <script>
+        Polymer({
+            is: "Vs-Stats",
+        });
+    </script>
+</dom-module>
