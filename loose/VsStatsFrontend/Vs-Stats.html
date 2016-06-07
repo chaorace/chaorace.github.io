@@ -32,18 +32,18 @@ Licensed under the MIT license
     <style include="iron-flex"></style>
     <template>
 
-        <paper-drawer-panel style="height: 275px; width:605px; position:relative" force-narrow="true" drawer-width="350px" min-date="(2016-05-01)">
+        <paper-drawer-panel style="height: 625px; width:455px; position:relative" force-narrow="true" drawer-width="350px" min-date="(2016-05-01)">
             <paper-header-panel drawer>
                 <paper-date-picker force-narrow="true"></paper-date-picker>
             </paper-header-panel>
-            <paper-card style="width:600px; height:270px" main>
+            <paper-card style="width:450px; height:620px" main>
                 <paper-header-panel>
                     <paper-toolbar>
                         <paper-icon-button paper-drawer-toggle icon="menu"></paper-icon-button>
                         <span class="title">Vicious Syndicate Datareaper</span>
                     </paper-toolbar>
-                    <div class="horizontal layout">
-                        <google-chart id="mainChart" type="pie" style="height: 200px; width: 200px">
+                    <div class="vertical layout">
+                        <google-chart id="mainChart" type="pie" style="height: 350px; width: 350px">
                         </google-chart>
                         <neon-animated-pages id="classCharts" selected="9" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
                             <neon-animatable id="0"></neon-animatable>
@@ -130,8 +130,8 @@ Licensed under the MIT license
         var mainChartOptions = {
             "legend": "none",
             "colors": [],
-            "height": 200,
-            "width": 200,
+            "height": 450,
+            "width": 450,
             "is3D": "true",
             "slices": {
                 0: {
@@ -146,73 +146,79 @@ Licensed under the MIT license
             }
         };
 
+        function loadJson(jsonURL){
+          $.getJSON(
+              jsonURL,
+              function(data) {
+
+
+                  for (var hero in Classes) {
+                      var heroDecks = data.decks[Object.keys(data.decks)[Classes[hero].value]];
+                      var heroDecksArray = [];
+                      var total = 0.0;
+
+                      for (var i in heroDecks) {
+                          total += heroDecks[i];
+                          heroDecksArray.push([i, heroDecks[i], `#${Classes[hero].color}`]);
+                      }
+                      heroDecksArray.splice(0, 0, ["Class", "Proportion", {
+                          role: 'style'
+                      }]);
+                      var chartData = escapeHtml(JSON.stringify(heroDecksArray));
+                      $(`#${Classes[hero].value}`).prepend(
+                          `<google-chart id="${Classes[hero].name}" type="column" options='{"legend": "none", "color": "#${Classes[hero].color}", "height": 200, "width": 475}' data="${chartData}" style="height: 200px; width: 400px""></google-chart>`
+                      );
+                      mainChartData.push([Classes[hero].name, total]);
+                  }
+
+                  //Sort classes by how heavily represented they are
+                  mainChartData.sort(function(a, b) {
+                      return a[1] - b[1];
+                  });
+
+                  //Messy logic for getting the right colors to appear in the right order. Necessary because of how google-charts handles colors
+                  for (var i in mainChartData) {
+                      for (var hero in Classes) {
+                          if (Classes[hero].name == mainChartData[i][0]) {
+                              mainChartOptions[Object.keys(mainChartOptions)[1]].push(Classes[hero].color);
+                          }
+                      }
+                  }
+
+                  $("#mainChart").attr("data", JSON.stringify(mainChartData));
+                  $("#mainChart").attr("options", JSON.stringify(mainChartOptions));
+
+                  document.getElementById("mainChart").drawChart();
+
+                  $("#mainChart").on("google-chart-select", function(x) {
+                      if (typeof x.target.selection[0] !== 'undefined') {
+
+                          var selection = x.target.selection[0].row;
+                          var selectionName = mainChartData[selection + 1][0];
+                          for (var hero in Classes) {
+                              if (Classes[hero].name == selectionName) {
+                                document.getElementById("classCharts").select(Classes[hero].value);
+                                return;
+                              }
+                          }
+                      }
+                  })
+                  var topHeroName = mainChartData[9][0];
+                  for (var hero in Classes) {
+                      if (Classes[hero].name == topHeroName) {
+                          document.getElementById("classCharts").select(Classes[hero].value);
+                          return;
+                      }
+                  }
+              });
+        }
+
+        function updateCharts(startDate, endDate, startRank, endRank, startTime, endTime){
+          //TODO: recieve options, turn that into a query uri, pipe into loadJson method
+        }
+
         $(function() {
-            var jsonURL = baseJsonURL;
-
-            $.getJSON(
-                jsonURL,
-                function(data) {
-
-
-                    for (var hero in Classes) {
-                        var heroDecks = data.decks[Object.keys(data.decks)[Classes[hero].value]];
-                        var heroDecksArray = [];
-                        var total = 0.0;
-
-                        for (var i in heroDecks) {
-                            total += heroDecks[i];
-                            heroDecksArray.push([i, heroDecks[i], `#${Classes[hero].color}`]);
-                        }
-                        heroDecksArray.splice(0, 0, ["Class", "Proportion", {
-                            role: 'style'
-                        }]);
-                        var chartData = escapeHtml(JSON.stringify(heroDecksArray));
-                        $(`#${Classes[hero].value}`).prepend(
-                            `<google-chart id="${Classes[hero].name}" type="column" options='{"legend": "none", "color": "#${Classes[hero].color}", "height": 200, "width": 400}' data="${chartData}" style="height: 200px; width: 400px""></google-chart>`
-                        );
-                        mainChartData.push([Classes[hero].name, total]);
-                    }
-
-                    //Sort classes by how heavily represented they are
-                    mainChartData.sort(function(a, b) {
-                        return a[1] - b[1];
-                    });
-
-                    //Messy logic for getting the right colors to appear in the right order. Necessary because of how google-charts handles colors
-                    for (var i in mainChartData) {
-                        for (var hero in Classes) {
-                            if (Classes[hero].name == mainChartData[i][0]) {
-                                mainChartOptions[Object.keys(mainChartOptions)[1]].push(Classes[hero].color);
-                            }
-                        }
-                    }
-
-                    $("#mainChart").attr("data", JSON.stringify(mainChartData));
-                    $("#mainChart").attr("options", JSON.stringify(mainChartOptions));
-
-                    document.getElementById("mainChart").drawChart();
-
-                    $("#mainChart").on("google-chart-select", function(x) {
-                        if (typeof x.target.selection[0] !== 'undefined') {
-
-                            var selection = x.target.selection[0].row;
-                            var selectionName = mainChartData[selection + 1][0];
-                            for (var hero in Classes) {
-                                if (Classes[hero].name == selectionName) {
-                                  document.getElementById("classCharts").select(Classes[hero].value);
-                                  return;
-                                }
-                            }
-                        }
-                    })
-                    var topHeroName = mainChartData[9][0];
-                    for (var hero in Classes) {
-                        if (Classes[hero].name == topHeroName) {
-                            document.getElementById("classCharts").select(Classes[hero].value);
-                            return;
-                        }
-                    }
-                });
+            loadJson(baseJsonURL);
         });
     </script>
 
