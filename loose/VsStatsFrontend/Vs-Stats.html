@@ -5,8 +5,11 @@ http://www.chaorace.github.io
 http://www.vicioussyndicate.com/
 
 Licensed under the MIT license
+
+Currently does not work in IE due to a lack of support for ECMAScript 6 features. IE is a legeacy browser now anyways, so this is a low priority issue
 -->
 
+<!-- Imports! -->
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/paper-card/paper-card.html">
 <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
@@ -17,34 +20,85 @@ Licensed under the MIT license
 <link rel="import" href="bower_components/neon-animation/neon-animations.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="bower_components/paper-date-picker/paper-date-picker.html">
-<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="bower_components/paper-time-picker/paper-time-picker.html">
 <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
 <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/paper-slider/paper-slider.html">
 
 
+
+<!-- Enables compatibility with most legacy browsers that don't support webcomponents -->
 <script src="bower_components/jquery-2.2.4.min/index.js"></script>
 
-<dom-module id="Vs-Stats">
-    <style include="iron-flex"></style>
-    <template>
 
-        <paper-drawer-panel style="height: 625px; width:455px; position:relative" force-narrow="true" drawer-width="350px" min-date="(2016-05-01)">
+<!-- Polymer module is internally called Vs-Stats -->
+<dom-module id="Vs-Stats">
+  <!-- Required for the Polymer implentation of the Flexbox layout -->
+    <style include="iron-flex"></style>
+
+    <template>
+    <style>
+      /*Hardcoded sizes, because it's not a full webpage and absolute control > resonsive design for applets*/
+      paper-drawer-panel{
+        height: 625px; width:455px; position:relative;
+      }
+      #mainChart{
+        height: 350px; width: 350px;
+      }
+    </style>
+        <!-- This container is used to create a drawer for the query settings to be tucked away in. force-narrow forces the drawer to always be hidden by default-->
+        <paper-drawer-panel id="optionsDrawer" force-narrow="true" drawer-width="350px">
             <paper-header-panel drawer>
-                <paper-date-picker force-narrow="true"></paper-date-picker>
+              <!-- TODO: Put settings here and plug them into the query -->
+                <paper-tabs id="optionsTabs">
+                  <paper-tab>
+                    Start Date
+                  </paper-tab>
+                  <paper-tab>
+                    End Date
+                  </paper-tab>
+                  <paper-tab>
+                    Ranks
+                  </paper-tab>
+                </paper-tabs>
+                <neon-animated-pages id="optionsPages" entry-animation="slide-from-left-animation" exit-animation="scale-down-animation" selected="0">
+                  <neon-animatable>
+                    <paper-date-picker id="startDatePicker" force-narrow="true"></paper-date-picker>
+                  </neon-animatable>
+                  <neon-animatable>
+                    <paper-date-picker id="endDatePicker" force-narrow="true"></paper-date-picker>
+                  </neon-animatable>
+                  <neon-animatable>
+                      <paper-toolbar>
+                        <span class="title">Start Rank || End Rank</span>
+                      </paper-toolbar>
+                      <div class="horizontal layout">
+                        <paper-slider id="startRankSlider" min="0" max="25" step="1" snaps pin editable></paper-slider>
+                        <paper-slider id="endRankSlider" min="0" max="25" step="1" snaps pin editable></paper-slider>
+                      </div>
+                  </neon-animatable>
+                </neon-animated-pages>
             </paper-header-panel>
-            <paper-card style="width:450px; height:620px" main>
+            <!-- Can't figure out why the styling here won't apply if it's in a stylesheet instead of hardcoded to the html. Will investigate later -->
+            <!-- This element creates the floating card effect common in material design. Needs to be slightly smaller than the container so the shading effect shows up -->
+            <paper-card style="width:99%; height:99%;" main>
                 <paper-header-panel>
+                  <!-- This adds a nice header with shading effect -->
                     <paper-toolbar>
+                      <!-- Button that summons drawer panel -->
                         <paper-icon-button paper-drawer-toggle icon="menu"></paper-icon-button>
                         <span class="title">Vicious Syndicate Datareaper</span>
                     </paper-toolbar>
+                    <!-- Flexbox layout tissue -->
                     <div class="vertical layout">
-                        <google-chart id="mainChart" type="pie" style="height: 350px; width: 350px">
+                      <!-- Chart that shows basic class breakdown. Contents and styling is handled in the javascript below -->
+                        <google-chart id="mainChart" type="pie">
                         </google-chart>
+                        <!-- Container for all of the individual class breakdown charts, contents are inserted using javascript below. Defaults to a page with a loading spinner before json is loaded -->
                         <neon-animated-pages id="classCharts" selected="9" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
                             <neon-animatable id="0"></neon-animatable>
                             <neon-animatable id="1"></neon-animatable>
@@ -55,7 +109,9 @@ Licensed under the MIT license
                             <neon-animatable id="6"></neon-animatable>
                             <neon-animatable id="7"></neon-animatable>
                             <neon-animatable id="8"></neon-animatable>
-                            <neon-animatable><br><paper-spinner active></paper-spinner></neon-animatable>
+                            <!-- This page only ever shows up before the json is loaded, or if the json fails to load -->
+                            <!-- TODO: Notify user if json fails to load, preferably with a relevant error message -->
+                            <neon-animatable><paper-spinner active></paper-spinner></neon-animatable>
                         </neon-animated-pages>
                     </div>
                 </paper-header-panel>
@@ -63,112 +119,110 @@ Licensed under the MIT license
         </paper-drawer-panel>
     </template>
 
+    <!-- Enumeration of Hearthstone classes and relevant static information -->
+    <script src="classes.js"></script>
+
     <script>
         //Function provided by bjornd at Stack Exchange
         function escapeHtml(unsafe) {
-            return unsafe
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+            return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
+        //Base JSON url without any parameters attached
         var baseJsonURL = "http://datareaper.fenom.me/meta";
 
-        Classes = {
-            DRUID: {
-                value: 0,
-                name: "Druid",
-                color: "663300"
-            },
-            HUNTER: {
-                value: 1,
-                name: "Hunter",
-                color: "00cc66"
-            },
-            MAGE: {
-                value: 2,
-                name: "Mage",
-                color: "009999"
-            },
-            PALADIN: {
-                value: 3,
-                name: "Paladin",
-                color: "999900"
-            },
-            PRIEST: {
-                value: 4,
-                name: "Priest",
-                color: "CCCC99"
-            },
-            ROGUE: {
-                value: 5,
-                name: "Rogue",
-                color: "333333"
-            },
-            SHAMAN: {
-                value: 6,
-                name: "Shaman",
-                color: "330099"
-            },
-            WARLOCK: {
-                value: 7,
-                name: "Warlock",
-                color: "663399"
-            },
-            WARRIOR: {
-                value: 8,
-                name: "Warrior",
-                color: "990000"
-            }
-        }
+        //Date values
+        //For an API-level object that you manipulate as much as dates, one would assume there'd be an easier way to clone them... there isn't, but I guess it's my own fault for being spoiled. Seriously, what kind of idiot language is this anyyway, why did we all collectively agree that this flaming pile of garbage was okay!? I swear, someday JS is going to be the downfall of mankind when an alien species misinterprets it as a declaration of war, just like that damned Adam Sandler movie.
+        var today = new Date(); today = new Date(today.getFullYear(), today.getMonth(), today.getDate()); //We want the current date stripped of all time info
+        var lastWeek = new Date(today.getTime()); lastWeek.setDate(today.getDate() - 7);
+        var threeMonthAgo = new Date(today.getTime()); threeMonthAgo.setMonth(today.getMonth() - 3);
 
-        var mainChartData = [
-            ["Class", "Proportion"]
-        ];
-        var mainChartOptions = {
-            "legend": "none",
-            "colors": [],
-            "height": 450,
-            "width": 450,
-            "is3D": "true",
-            "slices": {
-                0: {
-                    offset: 0.3
-                },
-                1: {
-                    offset: 0.2
-                },
-                2: {
-                    offset: 0.1
-                }
-            }
+        //Settings controls
+        $(function(){
+          var startDatePicker = document.getElementById("startDatePicker");
+          var endDatePicker = document.getElementById("endDatePicker");
+          var startRankSlider = document.getElementById("startRankSlider");
+          var endRankSlider = document.getElementById("endRankSlider");
+        })
+
+        //Variable that handles the current settings. Set default options here
+        var options = {
+          "startDate": lastWeek,
+          "endDate": today,
+          "lowestPossibleDate": threeMonthAgo, //The earliest allowed date. This should be set to the earliest date that Datareaper API can output useful info for
+          "startRank": 0,
+          "endRank": 5,
+          //Unused right now, get Felix on the tod query parameter eventually
+          "startTime": "",
+          "endTime": "",
         };
 
+        //Turns Date objects into a string formatted for use as a query by the Datareaper API
+        function formatDate(d){
+          var date = d.getDate().toString();
+          var month = d.getMonth().toString();
+          var year = d.getFullYear().toString();
+
+          //If the date/month isn't double digit, prepend a 0
+          if(date.length == 1){
+            date = `0${date}`;
+          }
+          if(month.length == 1){
+            month = `0${month}`
+          }
+
+          //Format into the format the datareaper database accepts, then return
+          return `${year}-${month}-${date}T00:00:01Z`;
+        }
+
+        //Call to get data from a json document, process it, then insert it into the appropriate charts and then draw
         function loadJson(jsonURL){
+          //Variable that handles data that eventually goes into the main class chart. Column labels required by google-chart element
+          var mainChartData = [
+            ["Class", "Proportion"]
+          ];
+          //Variable that handles options for the main class chart. Colors are inserted later, because classes do not neccessarily always appear in the same order on the chart, since they are sorted by proportions
+          var mainChartOptions = {
+            "legend": "none",
+            "colors": [],
+            "height": 410,
+            "width": 410,
+            "is3D": "true",
+            "slices": {
+              0: {
+                offset: 0.3
+              },
+              1: {
+                offset: 0.2
+              },
+              2: {
+                offset: 0.1
+              }
+            }
+          };
+
           $.getJSON(
               jsonURL,
               function(data) {
 
 
-                  for (var hero in Classes) {
-                      var heroDecks = data.decks[Object.keys(data.decks)[Classes[hero].value]];
+                  for (var hero in classes) {
+                      var heroDecks = data.decks[Object.keys(data.decks)[classes[hero].value]];
                       var heroDecksArray = [];
                       var total = 0.0;
 
                       for (var i in heroDecks) {
                           total += heroDecks[i];
-                          heroDecksArray.push([i, heroDecks[i], `#${Classes[hero].color}`]);
+                          heroDecksArray.push([i, heroDecks[i], `${classes[hero].color}`]);
                       }
                       heroDecksArray.splice(0, 0, ["Class", "Proportion", {
                           role: 'style'
                       }]);
                       var chartData = escapeHtml(JSON.stringify(heroDecksArray));
-                      $(`#${Classes[hero].value}`).prepend(
-                          `<google-chart id="${Classes[hero].name}" type="column" options='{"legend": "none", "color": "#${Classes[hero].color}", "height": 200, "width": 475}' data="${chartData}" style="height: 200px; width: 400px""></google-chart>`
+                      $(`#${classes[hero].value}`).html(
+                          `<google-chart id="${classes[hero].name}" type="column" options='{"legend": "none", "color": "${classes[hero].color}", "height": 200, "width": 475}' data="${chartData}" style="height: 200px; width: 400px""></google-chart>`
                       );
-                      mainChartData.push([Classes[hero].name, total]);
+                      mainChartData.push([classes[hero].name, total]);
                   }
 
                   //Sort classes by how heavily represented they are
@@ -178,9 +232,9 @@ Licensed under the MIT license
 
                   //Messy logic for getting the right colors to appear in the right order. Necessary because of how google-charts handles colors
                   for (var i in mainChartData) {
-                      for (var hero in Classes) {
-                          if (Classes[hero].name == mainChartData[i][0]) {
-                              mainChartOptions[Object.keys(mainChartOptions)[1]].push(Classes[hero].color);
+                      for (var hero in classes) {
+                          if (classes[hero].name == mainChartData[i][0]) {
+                              mainChartOptions[Object.keys(mainChartOptions)[1]].push(classes[hero].color);
                           }
                       }
                   }
@@ -195,36 +249,167 @@ Licensed under the MIT license
 
                           var selection = x.target.selection[0].row;
                           var selectionName = mainChartData[selection + 1][0];
-                          for (var hero in Classes) {
-                              if (Classes[hero].name == selectionName) {
-                                document.getElementById("classCharts").select(Classes[hero].value);
+                          for (var hero in classes) {
+                              if (classes[hero].name == selectionName) {
+                                document.getElementById("classCharts").select(classes[hero].value);
                                 return;
                               }
                           }
                       }
-                  })
+                  });
                   var topHeroName = mainChartData[9][0];
-                  for (var hero in Classes) {
-                      if (Classes[hero].name == topHeroName) {
-                          document.getElementById("classCharts").select(Classes[hero].value);
+                  for (var hero in classes) {
+                      if (classes[hero].name == topHeroName) {
+                          document.getElementById("classCharts").select(classes[hero].value);
                           return;
                       }
                   }
               });
         }
 
-        function updateCharts(startDate, endDate, startRank, endRank, startTime, endTime){
+        //Takes given options and creates a query uri, then passes that uri to the loadJson function. Placeholder for now!
+        function updateCharts(options){
           //TODO: recieve options, turn that into a query uri, pipe into loadJson method
+          var parameterString = "?"
+          if(options.startDate != undefined){
+            parameterString += `added[0]=${formatDate(options.startDate)}&`;
+          }
+          //endDate option is ignored when creating the query if it's equal to the current day, because the default is already to use the latest data
+          if((options.endDate != undefined) && (options.endDate.getTime() != today.getTime())){
+            parameterString += `added[1]=${formatDate(options.endDate)}&`;
+          }
+          if(options.startRank != undefined){
+            //Use numerical value to represent rank, 0 counts for legend
+            //TODO: Ask felix to allow filtering by specific legend ranks?
+            parameterString += `rank[0]=${options.startRank}&`;
+          }
+          if(options.endRank != undefined){
+            parameterString += `rank[1]=${options.endRank}&`;
+          }
+          //TODO: Get felix to add that damn ToD parameter!
+          // if(options.startTime != ""){
+          //   parameterString += `tod[0]=${options.startTime}&`;
+          // }
+          // if(options.endTime != ""){
+          //   parameterString += `tod[1]=${options.endTime}&`;
+          // }
+
+          //No parameters set, just give up and load the baseJsonURL
+
+          if(parameterString == "?"){
+            loadJson(baseJsonURL);
+          }else{
+            //Shave off any trailing & in the parameter string
+
+            if(parameterString.slice(-1) == "&"){
+              parameterString = parameterString.slice(0,-1);
+            }
+            //Attach parameter string to query and go
+            loadJson(baseJsonURL + parameterString);
+            // console.log(baseJsonURL + parameterString);
+          }
         }
 
-        $(function() {
-            loadJson(baseJsonURL);
-        });
+        //Gives the settings controls a sanity check and corrects potentially insane configurations
+        function instillSettingsSanity(){
+          //These hard restrictions on the date pickers don't change
+          startDatePicker.minDate = options.lowestPossibleDate;
+          endDatePicker.maxDate = today;
+
+          //If the endDatePicker is set to today, avoid related sanity checks, since it will be ignored anyways
+          if(endDatePicker.date.getTime() != today.getTime()){
+            //If the proposed end date is before or equal to the start date, set it to one day after the start date
+            if(endDatePicker.date.getTime() <= startDatePicker.date.getTime()){
+              endDatePicker.date = new Date(startDatePicker.date.getTime());
+              endDatePicker.date.setDate(endDatePicker.date.getDate() + 1);
+            }
+          }
+
+          //Tweak the UI to reflect which dates are invalid choices
+          //DatePicker settings
+          //If the proposed mindate for the endDatePicker is after today, ignore the proposal and set mindate to today
+          var proposedEndDateMin = new Date(startDatePicker.date.getTime()); proposedEndDateMin.setDate(proposedEndDateMin.getDate() + 1);
+          if(proposedEndDateMin.getTime() > today.getTime()){
+            endDatePicker.minDate = today;
+          }else{
+            //otherwise just use the proposed mindate
+            endDatePicker.minDate = proposedEndDateMin;
+          }
+          //Maximum start date is always a day before the currently selected end date
+          startDatePicker.maxDate = new Date(endDatePicker.date.getTime()); startDatePicker.maxDate.setDate(startDatePicker.maxDate.getDate() - 1);
+
+          //Slider settings
+          //If the endRankSlider is lower than the startRankSlider, set it to be equal
+          if(endRankSlider.value < startRankSlider.value){
+            endRankSlider.value = startRankSlider.value;
+          }
+        }
+
+        //Sync up options object with the settings controls
+        function updateOptions(){
+          options.startDate = startDatePicker.date;
+          options.endDate = endDatePicker.date;
+          options.startRank = startRankSlider.value;
+          options.endRank = endRankSlider.value;
+        }
     </script>
 
     <script>
         Polymer({
             is: "Vs-Stats",
+            //Stuff to do after the element is ready
+            ready: function(){
+              //On page load, download some json with default values and show it!
+              updateCharts(options);
+
+              //Fires a custom "optionsDrawerClosed" event that fires when the optionsDrawer is closed
+              var optionsDrawer = document.getElementById("optionsDrawer");
+              var optionsDrawerToggled = false;
+              $( "#optionsDrawer" ).on( "iron-deselect" , function(){
+                if(optionsDrawer._isMainSelected()){
+                  if(optionsDrawerToggled){
+                    optionsDrawerToggled = false;
+                    $(document).trigger("optionsDrawerClosed");
+                  }
+                }else{
+                  if(!optionsDrawerToggled){
+                    optionsDrawerToggled = true;
+                  }
+                }
+              });
+
+              //When optionsDrawerClosed is fired, load new settings and refresh charts
+              $(document).on("optionsDrawerClosed", function(){
+                //Pull up the spinner, to provide visual feedback that the load is not yet complete
+                classCharts.select(9);
+                options.startDate = new Date(startDatePicker.date.getTime());
+                options.endDate = new Date(endDatePicker.date.getTime());
+                instillSettingsSanity();
+                updateOptions();
+                updateCharts(options);
+              });
+
+              //When the optionsTabs selection changes, animate optionsPages to the appropriate page
+              var optionsTabs = document.getElementById("optionsTabs");
+              var optionsPages = document.getElementById("optionsPages");
+              $("#optionsTabs").on("iron-select", function(){
+                //animating to selected page
+                optionsPages.select(optionsTabs.selected);
+              });
+
+              //When a setting control is adjusted manually, check sanity and fix problems
+              $("#startDatePicker").click(instillSettingsSanity);
+              $("#endDatePicker").click(instillSettingsSanity);
+              $("#startRankSlider").on("change", instillSettingsSanity);
+              $("#endRankSlider").on("change", instillSettingsSanity);
+
+              //Preparing the settings controls
+              startDatePicker.date = options.startDate
+              endDatePicker.date = options.endDate
+              startRankSlider.value = options.startRank;
+              endRankSlider.value = options.endRank;
+              instillSettingsSanity();
+            }
         });
     </script>
 </dom-module>
