@@ -129,7 +129,8 @@ var intros = [
     "how you get tinnitus",
     "WAKE ME UP INSIDE",
     "(CAN'T WAKE UP)",
-    "employed and still depressed"
+    "employed and still depressed",
+    "is only game"
 ];
 
 var postLoad = setTimeout(main, 100)
