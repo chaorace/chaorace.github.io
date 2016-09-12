@@ -9,6 +9,7 @@ Licensed under the MIT license
 -->
 
 <!-- Polymer Imports -->
+<link rel="import" href="settings-item.html">
 <link rel="import" href="./bower_components/polymer/polymer.html">
 <link rel="import" href="./bower_components/paper-card/paper-card.html">
 <link rel="import" href="./bower_components/paper-header-panel/paper-header-panel.html">
@@ -33,17 +34,26 @@ Licensed under the MIT license
 <link rel="import" href="./bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="./bower_components/paper-item/paper-item.html">
 <link rel="import" href="./bower_components/paper-material/paper-material.html">
+<link rel="import" href="./bower_components/paper-input/paper-input.html">
+<link rel="import" href="./bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="./bower_components/iron-icons/places-icons.html">
+<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="./bower_components/paper-tooltip/paper-tooltip.html">
+
+<!-- Style Import-->
+<link rel="import" href="layout.html">
+
 
 <!-- JS Imports -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.css" integrity="sha256-SCxv09OPEC5N1ra7m8Ta6w00w/vqmorMmLTWA4vj/30=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css" integrity="sha256-zV9aQFg2u+n7xs0FTQEhY0zGHSFlwgIu7pivQiwJ38E=" crossorigin="anonymous" />
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css">
+<script type="text/javascript" src="./bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.js" integrity="sha256-WYzAaBURX9WTvOtaLDAKd63pGNqfXVgNzUMwnslI/+k=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js" integrity="sha256-xoE/2szqaiaaZh7goVyF5p9C/qBu9dM3V5utrQaiJMc=" crossorigin="anonymous"></script>
 
 <!-- ScalaJS Import -->
 <script src="vsstatsfrontend-fastopt.js"></script>
@@ -51,11 +61,8 @@ Licensed under the MIT license
 
 <!-- Polymer module is internally called Vs-Stats -->
 <dom-module id="Vs-Stats">
-  <!-- Required for the Polymer implentation of the Flexbox layout -->
-    <style include="iron-flex"></style>
-
     <template>
-    <style>
+    <style include="layout">
       /*Hardcoded sizes, because it's not a full webpage and absolute control > resonsive design for applets*/
       paper-drawer-panel{
         height: 640px; width:455px; position:relative;
@@ -63,48 +70,50 @@ Licensed under the MIT license
       #mainChart{
         height: 310px;
       }
-      .settingPanel{
-        margin: .5em; padding: 1em;
+      #settingPanel{
+        margin: .5em; padding: .5em; height: 97%;
+      }
+      #versionP{
+        color: grey;
       }
     </style>
         <!-- This container is used to create a drawer for the query settings to be tucked away in. force-narrow forces the drawer to always be hidden by default-->
-        <paper-drawer-panel id="settingsDrawer" force-narrow="true" drawer-width="350px">
+        <paper-drawer-panel id="mainPanel" force-narrow="true" drawer-width="350px">
             <paper-header-panel drawer>
-                <!-- TODO: Put settings here and plug them into the query -->
-                <paper-material class="settingPanel" elevation="3">
-                    <div>
-                        <h4>Date Range</h4>
-                        <input type="text" id="daterangePicker"/>
-                    </div>
-                    <div>
-                        <h4>Rank Range</h4>
-                        <paper-range-slider id="rankRangeSlider" min="0" max="25" snaps pin></paper-range-slider>
-                    </div>
-                    <div>
-                        <h4>Time Range</h4>
-                        <input id="startTimePicker" type="text" class="timePicker" autocomplete="off">
-                        <input id="endTimePicker" type="text" class="timePicker" autocomplete="off">
-                    </div>
-                    <paper-dropdown-menu label="Format">
-                        <paper-listbox class="dropdown-content" selected="1">
-                            <paper-item>Standard</paper-item>
-                            <paper-item>Wild</paper-item>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
-                    <div>
-                        <h4>Regions</h4>
-                        <paper-listbox multi>
+                <paper-material id="settingPanel" elevation="3">
+                    <settings-item icon="places:fitness-center" tooltip="Ranked Range" btnname="ranksReset">
+                        <paper-range-slider id="rankrangeSlider" min="0" max="25" snaps always-show-pin></paper-range-slider>
+                    </settings-item>
+                    <settings-item icon="today" tooltip="Date Range" btnname="datesReset">
+                        <paper-input type="text" label="No Date Range!" pattern="\d{2}\/\d{2}\/\d{4} - \d{2}\/\d{2}\/\d{4}" id="daterangePicker" no-label-float auto-validate></paper-input>
+                    </settings-item>
+                    <settings-item icon="schedule" tooltip="Time of Day Range" btnname="timesReset">
+                        <paper-input id="timePickerA" type="text" id="timePickerA" no-label-float></paper-input>
+                        <paper-input id="timePickerB" type="text" id="timePickerB" no-label-float></paper-input>
+                    </settings-item>
+                    <settings-item icon="places:all-inclusive" tooltip="Game Format" btnname="formatReset">
+                        <paper-dropdown-menu no-label-float>
+                            <paper-listbox id="formatPicker" class="dropdown-content">
+                                <paper-item>Standard</paper-item>
+                                <paper-item>Wild</paper-item>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                    </settings-item>
+                    <settings-item icon="explore" tooltip="Game Region(s)" btnname="regionsReset">
+                        <paper-listbox id="regionPicker" multi>
                             <paper-item>Americas</paper-item>
                             <paper-item>Europe</paper-item>
                             <paper-item disabled>Asia</paper-item>
                         </paper-listbox>
-                    </div>
+                    </settings-item>
+                    <p id="versionP"></p>
+                    <paper-tooltip for="versionP">Made by Chris Crockett (chaorace@gmail.com) @ http://chaorace.net</paper-tooltip>
                 </paper-material>
             </paper-header-panel>
             <!-- Can't figure out why the styling here won't apply if it's in a stylesheet instead of hardcoded to the html. Will investigate later -->
             <!-- This element creates the floating card effect common in material design. Needs to be slightly smaller than the container so the shading effect shows up -->
             <paper-card style="width:99%; height:99%;" main>
-                <paper-header-panel>
+                <paper-header-panel main>
                   <!-- This adds a nice header with shading effect -->
                     <paper-toolbar>
                       <!-- Button that summons drawer panel -->
@@ -112,21 +121,22 @@ Licensed under the MIT license
                         <span class="title">Vicious Syndicate Datareaper</span>
                     </paper-toolbar>
                     <!-- Flexbox layout tissue -->
-                    <div class="vertical layout">
+                    <div class="vertical-layout">
                       <paper-tabs id="pagePicker" selected="0">
-                        <paper-tab>Class Composition</paper-tab>
-                        <paper-tab>Matchup Breakdowns</paper-tab>
-                        <paper-tab>Meta Simu-Breaker</paper-tab>
+                        <paper-tab disabled>Class Composition</paper-tab>
+                        <paper-tab disabled>Matchup Breakdowns</paper-tab>
+                        <paper-tab disabled>Meta Simu-Breaker</paper-tab>
                       </paper-tabs>
-                      <neon-animated-pages id="mainPages" selected="0">
+                      <neon-animated-pages id="mainPages" entry-animation="slide-from-left-animation" exit-animation="slide-right-animation" selected="0">
                         <!-- This page only ever shows up while the json is loading, or if the json fails to load -->
-                        <!-- TODO: Notify user if json fails to load, preferably with a relevant error message -->
                         <neon-animatable>
-                          <paper-spinner active></paper-spinner>
+                            <div class="horizontal-layout center-justified">
+                                <paper-spinner active></paper-spinner>
+                            </div>
                         </neon-animatable>
                         <neon-animatable>
                           <!-- Chart that shows basic class breakdown. Contents and styling is handled in the javascript below -->
-                            <div class="horizontal center-justified layout">
+                            <div class="horizontal-layout center-justified">
                                 <google-chart id="mainChart" type="pie"></google-chart>
                             </div>
                             <!-- Container for all of the individual class breakdown charts, contents are inserted using javascript below. Defaults to a page with a loading spinner before json is loaded -->
@@ -142,39 +152,58 @@ Licensed under the MIT license
                               <neon-animatable id="8"></neon-animatable>
                               <!-- This page only ever shows up before the json is loaded, or if the json fails to load -->
                               <!-- TODO: Notify user if json fails to load, preferably with a relevant error message -->
-                              <neon-animatable><paper-spinner active></paper-spinner></neon-animatable>
                           </neon-animated-pages>
                         </neon-animatable>
                         <neon-animatable>
-                            <google-chart id="matchupChart" type="treemap"></google-chart>
+                            <div class="vertical-layout center">
+                                <div class="horizontal-layout">
+                                    <div style="position:relative">
+                                        <google-chart id="matchupChart" type="treemap" style="height: 100%; width: 100%"></google-chart>
+                                        <paper-ripple id="matchupChartRipple"></paper-ripple>
+                                    </div>
+                                    <div class="vertical-layout layout">
+                                        <paper-icon-button id="matchupsTop" icon="restore"></paper-icon-button>
+                                        <paper-icon-button id="matchupsUp" icon="arrow-upward"></paper-icon-button>
+                                        <paper-tooltip for="matchupsTop">Go to top</paper-tooltip>
+                                        <paper-tooltip for="matchupsUp">Go up</paper-tooltip>
+                                    </div>
+                                </div>
+                            </div>
                         </neon-animatable>
                       </neon-animated-pages>
                     </div>
                 </paper-header-panel>
-                <!-- TODO: Make the toast popup conform to the applet instead of the page -->
-                <paper-toast id="toast" class="fit-bottom"></paper-toast>
+                <paper-toast id="toast"></paper-toast>
             </paper-card>
         </paper-drawer-panel>
     </template>
     <!-- Polymer element boilerplate -->
     <script>
     Polymer({
-    is: "Vs-Stats"
-    // ready:
-    //Stuff to do after the element is ready
+        is: "Vs-Stats",
+        //Stuff to do after the element is ready
+        ready: function () {
+            var today = new Date();
+            $('#timePickerA').timepicker({
+                "timeFormat" : "H:i"
+            });
+            $('#timePickerB').timepicker({
+                "showDuration": true,
+                "minTime": "00:00",
+                "maxTime": "23:30",
+                "timeFormat" : "H:i"
+            });
+            $('#daterangePicker').daterangepicker({
+                "showDropdowns": true,
+                "minDate": "05/01/2016",
+                "maxDate": today
+            });
+            $("#mainPanel").get(0).closeDrawer = function(){this.selected = 'main'; $("#mainPanel").trigger("drawerClosed");}
+            $("#toast").get(0).fitInto = $("#main").get(0);
+        }
     });
     </script>
 
-    <script>
-    $( function() {
-        $(".timePicker").timepicker();
-        $('#daterangePicker').daterangepicker({
-            "showDropdowns": true,
-            "timePickerSeconds": true,
-            "linkedCalendars": false
-        });
-    });
-    </script>
     <!-- ScalaJS main method hook -->
     <script>
         $(function() {

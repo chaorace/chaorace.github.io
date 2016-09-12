@@ -1,0 +1,71 @@
+<!--
+Made with <3 by Chris Crockett (chaorace@gmail.com) for Vicious Syndicate
+
+http://www.chaorace.github.io
+http://www.vicioussyndicate.com/
+
+Licensed under the MIT license
+
+-->
+
+<!-- Polymer Imports -->
+<link rel="import" href="./bower_components/polymer/polymer.html">
+<link rel="import" href="./bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="./bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="./bower_components/paper-material/paper-material.html">
+<link rel="import" href="./bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="./bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./bower_components/paper-styles/color.html">
+
+
+<!-- Style Import-->
+<link rel="import" href="layout.html">
+
+<dom-module id="settings-item">
+    <!-- Required for the Polymer implentation of the Flexbox layout -->
+    <template>
+        <style include="layout">
+            #settings-item-container {
+                margin: .5em;
+                padding: .5em;
+                min-height: 4em;
+            }
+            #settings-item-icon {
+                margin: .6em;
+            }
+            .clear-button {
+                color: var(--paper-grey-500);
+                width: 2.4em;
+                height: 2.4em;
+                margin: .5em;
+            }
+        </style>
+        <paper-material id="settings-item-container">
+            <div>
+                <div class="horizontal-layout around-justified center">
+                    <div class="flexbox">
+                        <iron-icon icon="[[icon]]" id="settings-item-icon"></iron-icon>
+                        <paper-tooltip>[[tooltip]]</paper-tooltip>
+                    </div>
+                    <div class="flexbox-4">
+                        <content></content>
+                    </div>
+                    <div class="flexbox">
+                        <paper-icon-button icon="clear" class="clear-button" id="[[btnname]]"></paper-icon-button>
+                    </div>
+                </div>
+            </div>
+        </paper-material>
+    </template>
+    <!-- Polymer element boilerplate -->
+    <script>
+    Polymer({
+        is: "settings-item",
+        properties: {
+            icon: String,
+            tooltip: String,
+            btnname: String
+        }
+    });
+    </script>
+</dom-module>
