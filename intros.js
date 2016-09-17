@@ -131,7 +131,7 @@ var intros = [
     "(CAN'T WAKE UP)",
     "employed and still depressed",
     "is only game",
-    "Carthage should be destroyed"
+    "Carthage must be destroyed"
 ];
 
 var postLoad = setTimeout(main, 100)
